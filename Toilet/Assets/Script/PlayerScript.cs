@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
@@ -19,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
+
+    [Header("UI")]
+    public Image staminaBar;
+    public float stamina, maxStamina;
+    public float movementCost;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -46,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
 
         MyInput();
         SpeedControl();
+
+        if(Input.GetButtonDown("Fire1")) //left ctrl
+        StaminaRecharge(5);
 
         //handle drag
         if (grounded)
@@ -111,10 +120,28 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+
+
+        //Poo Gauge Calculation
+        stamina += movementCost;
+        if (stamina > 100)
+            stamina = 100;
+
+        staminaBar.fillAmount = stamina / maxStamina;
+
     }
 
     private void ResetJump()
     {
         jumpable = true;
+    }
+
+    private void StaminaRecharge(float rechargeAmount)
+    {
+        stamina -= rechargeAmount;
+        stamina = Mathf.Clamp(stamina, 0, 100);
+
+        staminaBar.fillAmount = stamina / maxStamina;
     }
 }
