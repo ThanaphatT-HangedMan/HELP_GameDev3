@@ -25,6 +25,8 @@ public class PlayerScript : MonoBehaviour
     public Image staminaBar;
     public float stamina, maxStamina;
     public float movementCost;
+    private Coroutine recharge;
+    public float ChargeRate;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -129,6 +131,8 @@ public class PlayerScript : MonoBehaviour
             stamina = 100;
 
         staminaBar.fillAmount = stamina / maxStamina;
+        if(recharge!=null) StopCoroutine(recharge);
+        recharge = StartCoroutine(RechargeStamina());
 
     }
 
@@ -143,5 +147,14 @@ public class PlayerScript : MonoBehaviour
         stamina = Mathf.Clamp(stamina, 0, 100);
 
         staminaBar.fillAmount = stamina / maxStamina;
+    }
+    private IEnumerator RechargeStamina()
+    {
+        yield return new WaitForSeconds(1f);
+        while (stamina < maxStamina)
+            stamina += ChargeRate / 10f;
+        if (stamina < maxStamina) stamina = maxStamina;
+        staminaBar.fillAmount=stamina / maxStamina;
+        yield return new WaitForSeconds(1f);
     }
 }
