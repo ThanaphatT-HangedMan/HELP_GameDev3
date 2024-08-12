@@ -52,10 +52,12 @@ public class PlayerScript : MonoBehaviour
         //GroundCheck
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
+        Debug.Log(stamina);
+
         MyInput();
         SpeedControl();
 
-        if(Input.GetButtonDown("Fire1")) //left ctrl
+         if(Input.GetButtonDown("Fire1")) //left ctrl
         StaminaRecharge(5);
 
         //handle drag
@@ -131,7 +133,7 @@ public class PlayerScript : MonoBehaviour
             stamina = 100;
 
         staminaBar.fillAmount = stamina / maxStamina;
-        if(recharge!=null) StopCoroutine(recharge);
+        if (recharge != null) StopCoroutine(recharge);
         recharge = StartCoroutine(RechargeStamina());
 
     }
@@ -151,10 +153,17 @@ public class PlayerScript : MonoBehaviour
     private IEnumerator RechargeStamina()
     {
         yield return new WaitForSeconds(1f);
-        while (stamina < maxStamina)
-            stamina += ChargeRate / 10f;
-        if (stamina < maxStamina) stamina = maxStamina;
-        staminaBar.fillAmount=stamina / maxStamina;
+
+        while (stamina > 1)
+        {
+            stamina -= ChargeRate / 10f;
+        }
+
+        if (stamina < 0) 
+            stamina = Math.Abs(0);
+
+        staminaBar.fillAmount = stamina / maxStamina;
+
         yield return new WaitForSeconds(1f);
     }
 }

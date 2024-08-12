@@ -737,7 +737,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906001295}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 9.8664, y: 0.66812, z: 1}
   m_ConstrainProportionsScale: 0
@@ -938,9 +938,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4334191134370064551, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: ChargeRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334191134370064551, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: maxStamina
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334191134370064551, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1906001297}
+    - target: {fileID: 4334191134370064551, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: movementCost
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5059880335839521664, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: m_Name
       value: Player
