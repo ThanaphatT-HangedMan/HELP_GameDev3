@@ -7,10 +7,20 @@ using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
+    private float moveSpeed;
+    public float walkSpeed;
+    public float sprintSpeed;
+    public float slideSpeed;
+
+    private float desiredMoveSpeed;
+    private float lastDesiredMoveSpeed;
+
+    public float speedIncreaseMultiplier;
+    public float slopeIncreaseMultiplier;
 
     public float groundDrag;
 
+    [Header("Jumping")]
     public float jumpForce;
     public float jumpCoolDown;
     public float airMultiplier;
@@ -21,6 +31,11 @@ public class PlayerScript : MonoBehaviour
     public LayerMask whatIsGround;
     bool grounded;
 
+    [Header("SlopeHandling")]
+    public float maxSlopeAngle;
+    private RaycastHit slopeHit;
+    private bool exitingSlope;
+
     [Header("UI")]
     public Image staminaBar;
     public float stamina, maxStamina;
@@ -30,6 +45,7 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode sprintKey = KeyCode.LeftShift;
 
 
     public Transform orientation;
@@ -39,6 +55,18 @@ public class PlayerScript : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+
+    public MovementState state;
+    public bool sliding;
+
+    public enum MovementState
+    {
+        walking,
+        sprinting,
+        sliding,
+        air,
+    }
+
 
     private void Start()
     {
@@ -52,13 +80,14 @@ public class PlayerScript : MonoBehaviour
         //GroundCheck
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
-        Debug.Log(stamina);
+        Debug.Log(desiredMoveSpeed);
 
         MyInput();
         SpeedControl();
+        StateHandler();
 
          if(Input.GetButtonDown("Fire1")) //left ctrl
-        StaminaRecharge(5);
+        //StaminaRecharge(5);
 
         //handle drag
         if (grounded)
@@ -87,6 +116,81 @@ public class PlayerScript : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
     }
+    
+    private void StateHandler()
+    {
+        // Mode - Sprint
+        if (grounded && Input.GetKey(sprintKey))
+        {
+            state = MovementState.sprinting;
+            desiredMoveSpeed = sprintSpeed;
+        }
+
+        // Mode - Walking
+        else if (grounded)
+        {
+            state = MovementState.walking;
+            desiredMoveSpeed = walkSpeed;
+        }
+
+        // Mode - Slide
+        else if (sliding)
+        {
+            state = MovementState.sliding;
+
+            if (OnSlope() && rb.velocity.y < 0.1f)
+                desiredMoveSpeed = slideSpeed;
+
+            else 
+                desiredMoveSpeed = sprintSpeed;
+        }
+
+        // Mode - Air
+        else
+        {
+            state = MovementState.air;
+        }
+
+        //checked if desired move speed has changed?
+        if (Math.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
+        {
+            StopAllCoroutines();
+            StartCoroutine(SmoothLerpMoveSpeed());
+        }
+        else
+        {
+            moveSpeed = desiredMoveSpeed;
+        }
+
+        lastDesiredMoveSpeed = desiredMoveSpeed;
+    }
+
+    private IEnumerator SmoothLerpMoveSpeed()
+    {
+        //smooth lerp move speed to desired value
+        float time = 0;
+        float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
+        float startValue = moveSpeed;
+
+        while (time < difference)
+        {
+            moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
+
+            if (OnSlope())
+            {
+                float slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
+                float slopeAngleIncrease = 1 + (slopeAngle / 90f);
+
+                time += Time.deltaTime * speedIncreaseMultiplier * slopeIncreaseMultiplier * slopeAngleIncrease;
+            }
+            else
+                time += Time.deltaTime * speedIncreaseMultiplier;
+            
+            yield return null;
+        }
+
+        moveSpeed = desiredMoveSpeed;
+    }
 
     private void MovePlayer()
     {
@@ -94,32 +198,64 @@ public class PlayerScript : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         rb.AddForce(moveDirection.normalized * moveSpeed  * 10f, ForceMode.Force);
+                
+        //on Slope
+        if (OnSlope() && !exitingSlope)
+        {
+            rb.AddForce(GetSlopeMoveDirection(moveDirection) * moveSpeed * 20f, ForceMode.Force);
+
+            if (rb.velocity.y > 0)
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+
+        }
 
         //on ground
-        if(grounded)
+        else if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         
         //on air
         else if(!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
 
+
+          
+
+        //Turn of gravity while on slope
+        rb.useGravity = !OnSlope();
+
     }
 
     private void SpeedControl()
     {
-        Vector3 flatVelocity = new Vector3(rb.velocity.x,0f,rb.velocity.z);
 
-        //Limit Velocity
-        if(flatVelocity.magnitude > moveSpeed)
+        //Limiting speed on slope
+        if (OnSlope() && !exitingSlope)
         {
-            Vector3 limitedVel = flatVelocity.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x,rb.velocity.y,limitedVel.z);
+            if(rb.velocity.magnitude > moveSpeed)
+                rb.velocity = rb.velocity.normalized * moveSpeed;
         }
+
+        else
+        {
+            //Normal Limit Velocity
+            Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+            //Limit Velocity
+            if (flatVelocity.magnitude > moveSpeed)
+            {
+                Vector3 limitedVel = flatVelocity.normalized * moveSpeed;
+                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            }
+        }
+
+
 
     }
 
     private void Jump()
     {
+        exitingSlope = true;
+
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
@@ -127,23 +263,24 @@ public class PlayerScript : MonoBehaviour
 
 
 
-        //Poo Gauge Calculation
+    /*    //Poo Gauge Calculation
         stamina += movementCost;
         if (stamina > 100)
             stamina = 100;
 
         staminaBar.fillAmount = stamina / maxStamina;
         if (recharge != null) StopCoroutine(recharge);
-        recharge = StartCoroutine(RechargeStamina());
+        recharge = StartCoroutine(RechargeStamina());*/
 
     }
 
     private void ResetJump()
     {
         jumpable = true;
+        exitingSlope = false;
     }
-
-    private void StaminaRecharge(float rechargeAmount)
+    
+/*    private void StaminaRecharge(float rechargeAmount)
     {
         stamina -= rechargeAmount;
         stamina = Mathf.Clamp(stamina, 0, 100);
@@ -165,5 +302,21 @@ public class PlayerScript : MonoBehaviour
         staminaBar.fillAmount = stamina / maxStamina;
 
         yield return new WaitForSeconds(1f);
+    }*/
+
+    public bool OnSlope()
+    {
+        if(Physics.Raycast(transform.position,Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < maxSlopeAngle && angle != 0;
+        }
+
+        return false;
+    }
+
+    public Vector3 GetSlopeMoveDirection(Vector3 direction)
+    {
+        return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
 }
