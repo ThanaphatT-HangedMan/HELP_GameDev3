@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
     public float walkSpeed;
     public float sprintSpeed;
     public float slideSpeed;
+    public float wallRunSpeed;
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
@@ -58,12 +59,14 @@ public class PlayerScript : MonoBehaviour
 
     public MovementState state;
     public bool sliding;
+    public bool wallrunning;
 
     public enum MovementState
     {
         walking,
         sprinting,
         sliding,
+        wallrunning,
         air,
     }
 
@@ -79,8 +82,6 @@ public class PlayerScript : MonoBehaviour
     {
         //GroundCheck
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-
-        Debug.Log(desiredMoveSpeed);
 
         MyInput();
         SpeedControl();
@@ -143,6 +144,13 @@ public class PlayerScript : MonoBehaviour
 
             else 
                 desiredMoveSpeed = sprintSpeed;
+        }
+
+        // Mode - Wallrunning
+        else if (wallrunning)
+        {
+            state = MovementState.wallrunning;
+            desiredMoveSpeed = wallRunSpeed;
         }
 
         // Mode - Air
