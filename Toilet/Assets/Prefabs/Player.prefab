@@ -118,6 +118,8 @@ GameObject:
   - component: {fileID: 3724144038540421236}
   - component: {fileID: 673821458858238283}
   - component: {fileID: 4334191134370064551}
+  - component: {fileID: 588604905046038073}
+  - component: {fileID: 2552774585926680843}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -183,20 +185,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b3ff027147d3b43af7d8fc6eff48bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  walkSpeed: 10
+  sprintSpeed: 15
+  slideSpeed: 30
+  wallRunSpeed: 10.5
+  speedIncreaseMultiplier: 0
+  slopeIncreaseMultiplier: 0
   groundDrag: 5
-  jumpForce: 7
+  jumpForce: 17
   jumpCoolDown: 0.25
-  airMultiplier: 0.4
+  airMultiplier: 0.255
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
+  maxSlopeAngle: 40
   staminaBar: {fileID: 0}
   stamina: 0
-  maxStamina: 100
-  movementCost: 10
+  maxStamina: 1000
+  movementCost: 100
+  ChargeRate: 1
   jumpKey: 32
+  sprintKey: 304
+  orientation: {fileID: 2548229923090354414}
+  state: 0
+  sliding: 0
+  wallrunning: 0
+--- !u!114 &588604905046038073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059880335839521664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee8c17dcd1c8a745897d968eb2450ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 2548229923090354414}
+  playerObj: {fileID: 3724144038540421236}
+  maxSlideTime: 0.75
+  slideForce: 200
+  slideYScale: 0.5
+  slideKey: 306
+--- !u!114 &2552774585926680843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059880335839521664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e57af9d84219f42bf4a5f2a10dd14b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 1024
+  wallJumpUpForce: 7
+  wallJumpSideForce: 20
+  wallClimbSpeed: 3
+  wallRunForce: 200
+  maxWallRunTime: 1.5
+  jumpKey: 32
+  upwardRunKey: 304
+  downwardRunkey: 306
+  downwardRunnings: 0
+  exitWallTime: 0.1
+  wallCheckDistance: 0.7
+  minJumpHeight: 2
   orientation: {fileID: 2548229923090354414}
 --- !u!1 &5652498059884120117
 GameObject:

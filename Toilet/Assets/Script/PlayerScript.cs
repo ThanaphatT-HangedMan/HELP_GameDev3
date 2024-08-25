@@ -229,7 +229,7 @@ public class PlayerScript : MonoBehaviour
           
 
         //Turn of gravity while on slope
-        rb.useGravity = !OnSlope();
+        if(!wallrunning) rb.useGravity = !OnSlope();
 
     }
 
