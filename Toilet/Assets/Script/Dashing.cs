@@ -42,8 +42,7 @@ public class Dashing : MonoBehaviour
 
     private void Update () 
     {
-        if(Input.GetKey (dashKey))
-
+        if(Input.GetKey (dashKey) && ps.state != PlayerScript.MovementState.wallrunning)
             Dash();
 
         if(dashCDTimer > 0)

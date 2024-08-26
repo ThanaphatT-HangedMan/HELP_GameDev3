@@ -8,6 +8,7 @@ public class Wallrunning : MonoBehaviour
     public LayerMask whatIsGround;
     public LayerMask whatIsWall;
 
+
     public float wallJumpUpForce;
     public float wallJumpSideForce;
 
@@ -88,6 +89,7 @@ public class Wallrunning : MonoBehaviour
         //State 1 - Wallrunning
         if((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && !exitWall)
         {
+
             //start wallrun
             if (!ps.wallrunning)
                 StartWallRun();
@@ -190,6 +192,9 @@ public class Wallrunning : MonoBehaviour
         //Enter Exiting wall state
         exitWall = true;
         exitWallTimer = exitWallTime;
+        
+        if (ps.jumpRemaining < 2)
+        ps.jumpRemaining = 2;
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
         Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;

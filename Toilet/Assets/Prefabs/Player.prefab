@@ -199,6 +199,8 @@ MonoBehaviour:
   jumpForce: 36
   jumpCoolDown: 0.25
   airMultiplier: 0.5
+  maxJumpCount: 2
+  jumpRemaining: 0
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -252,7 +254,7 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 2048
-  wallJumpUpForce: 30
+  wallJumpUpForce: 10
   wallJumpSideForce: 50
   wallClimbSpeed: 3
   wallRunForce: 200

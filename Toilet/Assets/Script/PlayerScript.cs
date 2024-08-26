@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
@@ -35,7 +36,6 @@ public class PlayerScript : MonoBehaviour
     public float airMultiplier;
     bool jumpable;
     bool doubleJumpable;
-    bool isInAir;
     public int maxJumpCount;
     public int jumpRemaining;
 
@@ -59,6 +59,7 @@ public class PlayerScript : MonoBehaviour
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
+    public KeyCode RestartKey = KeyCode.R;
 
 
     public Transform orientation;
@@ -130,6 +131,11 @@ public class PlayerScript : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
 
+        if(Input.GetKeyDown(RestartKey))
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        }
+
 
     }
     
@@ -166,6 +172,7 @@ public class PlayerScript : MonoBehaviour
         // Mode - Wallrunning
         else if (wallrunning)
         {
+
             state = MovementState.wallrunning;
             desiredMoveSpeed = wallRunSpeed;
         }
@@ -173,7 +180,6 @@ public class PlayerScript : MonoBehaviour
         // Mode - Air
         else
         {
-            isInAir = true;
             state = MovementState.air;
 
             if (desiredMoveSpeed < sprintSpeed)
