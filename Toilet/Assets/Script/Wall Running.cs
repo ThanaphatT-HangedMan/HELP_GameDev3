@@ -8,6 +8,7 @@ public class Wallrunning : MonoBehaviour
     public LayerMask whatIsGround;
     public LayerMask whatIsWall;
 
+
     public float wallJumpUpForce;
     public float wallJumpSideForce;
 
@@ -30,6 +31,10 @@ public class Wallrunning : MonoBehaviour
     public float exitWallTime;
     private float exitWallTimer;
 
+    [Header("Gravity")]
+    public bool useGravity;
+    public float gravityCounterForce;
+
     [Header("Detection")]
     public float wallCheckDistance;
     public float minJumpHeight;
@@ -40,6 +45,7 @@ public class Wallrunning : MonoBehaviour
 
     [Header("References")]
     public Transform orientation;
+    public PlayerCamera cam;
     private PlayerScript ps;
     private Rigidbody rb;
 
@@ -83,6 +89,7 @@ public class Wallrunning : MonoBehaviour
         //State 1 - Wallrunning
         if((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && !exitWall)
         {
+
             //start wallrun
             if (!ps.wallrunning)
                 StartWallRun();
@@ -107,7 +114,7 @@ public class Wallrunning : MonoBehaviour
         {
             if (ps.wallrunning)
                 StopWallRun();
-
+             
             if(exitWallTimer > 0)
                 exitWallTimer -= Time.deltaTime;
 
@@ -129,12 +136,23 @@ public class Wallrunning : MonoBehaviour
         ps.wallrunning = true;
 
         wallRunTimer = maxWallRunTime;
+
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        // apply camera effects
+        cam.DoFov(90f);
+
+        if (wallLeft)
+            cam.DoTilt(-5f);
+
+        if (wallRight)
+            cam.DoTilt(5f);
     }
 
     private void WallRunningMovement()
     {
-        rb.useGravity = false;
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.useGravity = useGravity;
+
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
         Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
@@ -154,11 +172,19 @@ public class Wallrunning : MonoBehaviour
         //push toward wall
         if (!(wallLeft && horizontalInput > 0) && !(wallRight && horizontalInput < 0))
         rb.AddForce(-wallNormal * 100, ForceMode.Force);
+
+        // weaken gravity
+        if (useGravity)
+            rb.AddForce(transform.up * gravityCounterForce, ForceMode.Force); 
     }
 
     private void StopWallRun()
     {
         ps.wallrunning = false;
+
+        //reset camera
+        cam.DoFov(80f);
+        cam.DoTilt(0f);
     }
 
     private void WallJump()
@@ -166,6 +192,9 @@ public class Wallrunning : MonoBehaviour
         //Enter Exiting wall state
         exitWall = true;
         exitWallTimer = exitWallTime;
+        
+        if (ps.jumpRemaining < 2)
+        ps.jumpRemaining = 2;
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
         Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;

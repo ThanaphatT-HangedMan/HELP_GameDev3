@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
@@ -12,9 +13,17 @@ public class PlayerScript : MonoBehaviour
     public float sprintSpeed;
     public float slideSpeed;
     public float wallRunSpeed;
+    public float dashSpeed;
+    public float dashSpeedChangeFactor;
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
+    private MovementState lastState;
+    private bool keepMomentum;
+    private float speedChangeFactor;
+
+    public float maxYSpeed;
+
 
     public float speedIncreaseMultiplier;
     public float slopeIncreaseMultiplier;
@@ -26,6 +35,9 @@ public class PlayerScript : MonoBehaviour
     public float jumpCoolDown;
     public float airMultiplier;
     bool jumpable;
+    bool doubleJumpable;
+    public int maxJumpCount;
+    public int jumpRemaining;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -47,6 +59,7 @@ public class PlayerScript : MonoBehaviour
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
+    public KeyCode RestartKey = KeyCode.R;
 
 
     public Transform orientation;
@@ -60,12 +73,12 @@ public class PlayerScript : MonoBehaviour
     public MovementState state;
     public bool sliding;
     public bool wallrunning;
-
+    public bool dashing;
     public enum MovementState
     {
         walking,
-        sprinting,
         sliding,
+        dashing,
         wallrunning,
         air,
     }
@@ -87,12 +100,15 @@ public class PlayerScript : MonoBehaviour
         SpeedControl();
         StateHandler();
 
-         if(Input.GetButtonDown("Fire1")) //left ctrl
-        //StaminaRecharge(5);
+
 
         //handle drag
-        if (grounded)
-            rb.drag = groundDrag;
+        if (grounded && state != MovementState.dashing)
+            {
+                rb.drag = groundDrag;
+                jumpRemaining = maxJumpCount;
+            }
+
         else
             rb.drag = 0;
     }
@@ -108,30 +124,37 @@ public class PlayerScript : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //when to Jump
-        if(Input.GetKey(jumpKey) && jumpable && grounded)
+        if(Input.GetKeyDown(jumpKey) && jumpable && (grounded || jumpRemaining > 0))
         {
             jumpable = false;
-
             Jump();
-
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
+
+        if(Input.GetKeyDown(RestartKey))
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        }
+
+
     }
     
     private void StateHandler()
     {
-        // Mode - Sprint
-        if (grounded && Input.GetKey(sprintKey))
-        {
-            state = MovementState.sprinting;
-            desiredMoveSpeed = sprintSpeed;
-        }
 
         // Mode - Walking
-        else if (grounded)
+        if (grounded)
         {
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
+        }
+
+        // Mode - Dashing
+        else if (dashing)
+        {
+            state = MovementState.dashing;
+            desiredMoveSpeed = dashSpeed;
+            speedChangeFactor = dashSpeedChangeFactor;
         }
 
         // Mode - Slide
@@ -149,6 +172,7 @@ public class PlayerScript : MonoBehaviour
         // Mode - Wallrunning
         else if (wallrunning)
         {
+
             state = MovementState.wallrunning;
             desiredMoveSpeed = wallRunSpeed;
         }
@@ -157,7 +181,13 @@ public class PlayerScript : MonoBehaviour
         else
         {
             state = MovementState.air;
+
+            if (desiredMoveSpeed < sprintSpeed)
+                desiredMoveSpeed = walkSpeed;
+            else
+                desiredMoveSpeed = sprintSpeed;
         }
+
 
         //checked if desired move speed has changed?
         if (Math.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
@@ -170,7 +200,25 @@ public class PlayerScript : MonoBehaviour
             moveSpeed = desiredMoveSpeed;
         }
 
+        bool desiredMoveSpeedHasChange = desiredMoveSpeed != lastDesiredMoveSpeed;
+        if (lastState == MovementState.dashing) keepMomentum = true;
+
+        if (desiredMoveSpeedHasChange)
+        {
+            if (keepMomentum)
+            {
+                StopAllCoroutines();
+                StartCoroutine(SmoothLerpMoveSpeed());
+            }
+            else
+            {
+                StopAllCoroutines();
+                moveSpeed = desiredMoveSpeed;
+            }
+        }
+
         lastDesiredMoveSpeed = desiredMoveSpeed;
+        lastState = state;
     }
 
     private IEnumerator SmoothLerpMoveSpeed()
@@ -180,24 +228,20 @@ public class PlayerScript : MonoBehaviour
         float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
         float startValue = moveSpeed;
 
+        float bootsFactor = speedChangeFactor;
+
         while (time < difference)
         {
             moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
 
-            if (OnSlope())
-            {
-                float slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
-                float slopeAngleIncrease = 1 + (slopeAngle / 90f);
+            time += Time.deltaTime * bootsFactor;
 
-                time += Time.deltaTime * speedIncreaseMultiplier * slopeIncreaseMultiplier * slopeAngleIncrease;
-            }
-            else
-                time += Time.deltaTime * speedIncreaseMultiplier;
-            
             yield return null;
         }
 
         moveSpeed = desiredMoveSpeed;
+        speedChangeFactor = 1f;
+        keepMomentum = false;
     }
 
     private void MovePlayer()
@@ -229,7 +273,7 @@ public class PlayerScript : MonoBehaviour
           
 
         //Turn of gravity while on slope
-        rb.useGravity = !OnSlope();
+        if(!wallrunning) rb.useGravity = !OnSlope();
 
     }
 
@@ -256,6 +300,9 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
+        //limit Y Vel
+        if(maxYSpeed != 0 && rb.velocity.y > maxYSpeed)
+            rb.velocity = new Vector3(rb.velocity.x, maxYSpeed, rb.velocity.z);
 
 
     }
@@ -263,54 +310,21 @@ public class PlayerScript : MonoBehaviour
     private void Jump()
     {
         exitingSlope = true;
-
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
-
-
-    /*    //Poo Gauge Calculation
-        stamina += movementCost;
-        if (stamina > 100)
-            stamina = 100;
-
-        staminaBar.fillAmount = stamina / maxStamina;
-        if (recharge != null) StopCoroutine(recharge);
-        recharge = StartCoroutine(RechargeStamina());*/
-
     }
 
     private void ResetJump()
     {
-        jumpable = true;
+        jumpRemaining -= 1;
         exitingSlope = false;
+        jumpable = true;
     }
     
-/*    private void StaminaRecharge(float rechargeAmount)
-    {
-        stamina -= rechargeAmount;
-        stamina = Mathf.Clamp(stamina, 0, 100);
 
-        staminaBar.fillAmount = stamina / maxStamina;
-    }
-    private IEnumerator RechargeStamina()
-    {
-        yield return new WaitForSeconds(1f);
-
-        while (stamina > 1)
-        {
-            stamina -= ChargeRate / 10f;
-        }
-
-        if (stamina < 0) 
-            stamina = Math.Abs(0);
-
-        staminaBar.fillAmount = stamina / maxStamina;
-
-        yield return new WaitForSeconds(1f);
-    }*/
 
     public bool OnSlope()
     {
@@ -327,4 +341,6 @@ public class PlayerScript : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
+
+
 }
