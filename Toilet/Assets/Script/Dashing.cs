@@ -42,8 +42,11 @@ public class Dashing : MonoBehaviour
 
     private void Update () 
     {
-        if(Input.GetKey (dashKey) && ps.state != PlayerScript.MovementState.wallrunning)
+        if(Input.GetKey (dashKey) && ps.state != PlayerScript.MovementState.wallrunning && ps.abilityCount > 0)
+        {
             Dash();
+        }
+
 
         if(dashCDTimer > 0)
             dashCDTimer -= Time.deltaTime;
@@ -72,6 +75,8 @@ public class Dashing : MonoBehaviour
         if(disableGravity)
             rb.useGravity = false;
 
+        //Decrease ability count
+        ps.abilityCount -= 1;
 
         delayForceToApply = forceToApply;
         Invoke(nameof(delayedDashForce), 0.025f);
