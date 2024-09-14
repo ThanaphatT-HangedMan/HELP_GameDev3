@@ -106,7 +106,10 @@ public class Wallrunning : MonoBehaviour
 
             //wall jump
             if(Input.GetKeyDown(jumpKey))
+            {
                 WallJump();
+            }
+           
         }
 
         //State 2 - Exiting
@@ -120,6 +123,7 @@ public class Wallrunning : MonoBehaviour
 
             if (exitWallTimer <= 0)
                 exitWall = false;
+
         }
 
         //State 3 - None
@@ -188,7 +192,7 @@ public class Wallrunning : MonoBehaviour
     }
 
     private void WallJump()
-    {
+    {      
         //Enter Exiting wall state
         exitWall = true;
         exitWallTimer = exitWallTime;

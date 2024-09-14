@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
+    private Wallrunning wr;
+
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
@@ -15,6 +17,8 @@ public class PlayerScript : MonoBehaviour
     public float wallRunSpeed;
     public float dashSpeed;
     public float dashSpeedChangeFactor;
+    public float abilityCount;
+    public float maxAbilityCount;
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
@@ -61,7 +65,6 @@ public class PlayerScript : MonoBehaviour
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode RestartKey = KeyCode.R;
 
-
     public Transform orientation;
     float horizontalInput;
     float verticalInput;
@@ -86,6 +89,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
+        abilityCount = maxAbilityCount;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         ResetJump();
@@ -100,6 +104,22 @@ public class PlayerScript : MonoBehaviour
         SpeedControl();
         StateHandler();
 
+        
+        //limiting max jump when ability goes to 0
+        if (abilityCount <= 0)
+        {
+            maxJumpCount = 1;
+        }
+        else
+        {
+            maxJumpCount = 2;
+        }
+
+        //Set ability count to not exceed max ability count
+        if (abilityCount > maxAbilityCount)
+        {
+            abilityCount = maxAbilityCount;
+        }
 
 
         //handle drag
@@ -128,10 +148,19 @@ public class PlayerScript : MonoBehaviour
         {
             jumpable = false;
             Jump();
+
+            // If performing a double jump (jumpRemaining goes from 2 to 1)
+            if (jumpRemaining == 1 && abilityCount > 0)
+            {
+                abilityCount--;
+            }
+
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
 
-        if(Input.GetKeyDown(RestartKey))
+
+
+        if (Input.GetKeyDown(RestartKey))
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
