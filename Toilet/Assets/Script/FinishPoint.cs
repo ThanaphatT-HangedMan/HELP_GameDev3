@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class FinishPoint : MonoBehaviour
 {
     [SerializeField] private bool goNextLevel;
     [SerializeField] private string levelName;
-    private PlayerScript ps;
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -20,8 +19,8 @@ public class FinishPoint : MonoBehaviour
             else
             {
                 SceneController.instance.LoadScene(levelName);
-            }
 
+            }
         }
     }
 

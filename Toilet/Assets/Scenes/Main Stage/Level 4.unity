@@ -694,8 +694,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5824462481438844041, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
+      propertyPath: levelName
+      value: Level 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824462481438844041, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
       propertyPath: goNextLevel
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3304,6 +3308,10 @@ PrefabInstance:
       propertyPath: ps
       value: 
       objectReference: {fileID: 997111680}
+    - target: {fileID: 7449856870425862541, guid: 91754cb69b9b3494cb5926286bf68ce4, type: 3}
+      propertyPath: defaultSetting
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7449856870425862541, guid: 91754cb69b9b3494cb5926286bf68ce4, type: 3}
       propertyPath: stageMaxAbilityCount
       value: 3
