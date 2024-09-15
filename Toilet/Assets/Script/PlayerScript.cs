@@ -103,7 +103,6 @@ public class PlayerScript : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
-
         
         //limiting max jump when ability goes to 0
         if (abilityCount <= 0)
@@ -123,7 +122,7 @@ public class PlayerScript : MonoBehaviour
 
 
         //handle drag
-        if (grounded && state != MovementState.dashing)
+        if (grounded && state != MovementState.dashing )
             {
                 rb.drag = groundDrag;
                 jumpRemaining = maxJumpCount;
@@ -201,7 +200,6 @@ public class PlayerScript : MonoBehaviour
         // Mode - Wallrunning
         else if (wallrunning)
         {
-
             state = MovementState.wallrunning;
             desiredMoveSpeed = wallRunSpeed;
         }

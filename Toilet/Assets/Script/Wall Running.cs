@@ -17,6 +17,9 @@ public class Wallrunning : MonoBehaviour
     public float maxWallRunTime;
     private float wallRunTimer;
 
+    private float abilityCountBefore;
+    private float abilityCountAfter;
+
     [Header("Input")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode upwardRunKey = KeyCode.LeftShift;
@@ -107,7 +110,17 @@ public class Wallrunning : MonoBehaviour
             //wall jump
             if(Input.GetKeyDown(jumpKey))
             {
+                abilityCountBefore = ps.abilityCount;
+
                 WallJump();
+                ps.jumpRemaining = ps.maxJumpCount;
+                ps.abilityCount = ps.abilityCount + 1;
+                abilityCountAfter = ps.abilityCount;
+
+                if (abilityCountBefore < abilityCountAfter)
+                {
+                    ps.abilityCount = abilityCountBefore;
+                }
             }
            
         }
@@ -138,6 +151,7 @@ public class Wallrunning : MonoBehaviour
     private void StartWallRun()
     {
         ps.wallrunning = true;
+        abilityCountBefore = ps.abilityCount;
 
         wallRunTimer = maxWallRunTime;
 
@@ -198,7 +212,7 @@ public class Wallrunning : MonoBehaviour
         exitWallTimer = exitWallTime;
         
         if (ps.jumpRemaining < 2)
-        ps.jumpRemaining = 2;
+            ps.jumpRemaining = 2;
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
         Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;
