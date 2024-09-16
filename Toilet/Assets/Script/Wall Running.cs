@@ -57,7 +57,7 @@ public class Wallrunning : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ps = GetComponent<PlayerScript>();
     }
-
+     
     private void Update()
     {
         CheckForWall();

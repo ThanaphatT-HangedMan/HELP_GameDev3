@@ -159,6 +159,7 @@ public class PlayerScript : MonoBehaviour
 
 
 
+
         if (Input.GetKeyDown(RestartKey))
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
