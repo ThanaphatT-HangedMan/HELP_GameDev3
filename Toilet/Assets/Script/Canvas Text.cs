@@ -9,6 +9,8 @@ public class CanvasText : MonoBehaviour
     [SerializeField] TextMeshProUGUI abilityLeft, maxAbility, Timertext;
     [SerializeField] float RemainingTime;
     PlayerScript ps;
+    public TextMeshProUGUI FinalTime;
+
     void Start()
     {
         ps = GetComponent<PlayerScript>();
@@ -27,7 +29,7 @@ public class CanvasText : MonoBehaviour
             RemainingTime = 0;
             Timertext.color = Color.red;
         }
-        Timertext.text = RemainingTime.ToString();
+
 
     }
 
@@ -35,5 +37,7 @@ public class CanvasText : MonoBehaviour
     {
         abilityLeft.text = ps.abilityCount.ToString();
         maxAbility.text = ps.maxAbilityCount.ToString();
+        Timertext.text = RemainingTime.ToString();
+        FinalTime.text = Timertext.text;
     }
 }

@@ -449,8 +449,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityLeft: {fileID: 5459012513704044445}
   maxAbility: {fileID: 5919914021277372205}
-  Timertext: {fileID: 0}
-  RemainingTime: 0
+  Timertext: {fileID: 4423027395205783110}
+  RemainingTime: 999
+  FinalTime: {fileID: 0}
 --- !u!1 &5652498059884120117
 GameObject:
   m_ObjectHideFlags: 0

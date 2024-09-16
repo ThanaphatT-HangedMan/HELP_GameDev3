@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class FinishPoint : MonoBehaviour
 {
+    [Header ("Reference")]
     public GameObject gameOverUI;
     public PlayerCamera pc;
     public PlayerScript ps;
     public CanvasText ct;
+
+    [SerializeField] TextMeshProUGUI finalText;
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -24,6 +28,7 @@ public class FinishPoint : MonoBehaviour
 
     private void GameOver()
     {
+        finalText = ct.FinalTime;
         gameOverUI.SetActive(true);
     }
 
