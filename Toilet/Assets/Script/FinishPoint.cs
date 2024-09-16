@@ -7,6 +7,7 @@ public class FinishPoint : MonoBehaviour
     public GameObject gameOverUI;
     public PlayerCamera pc;
     public PlayerScript ps;
+    public CanvasText ct;
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -14,6 +15,7 @@ public class FinishPoint : MonoBehaviour
         {
             pc.GetComponent<PlayerCamera>().enabled = false;
             ps.GetComponent<PlayerScript>().enabled = false;
+            ct.GetComponent<CanvasText>().enabled = false;
             GameOver();
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

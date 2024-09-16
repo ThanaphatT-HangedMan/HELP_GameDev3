@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CanvasText : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI abilityLeft, maxAbility,Timertext;
+    [SerializeField] TextMeshProUGUI abilityLeft, maxAbility, Timertext;
     [SerializeField] float RemainingTime;
     PlayerScript ps;
     void Start()
@@ -28,6 +28,7 @@ public class CanvasText : MonoBehaviour
             Timertext.color = Color.red;
         }
         Timertext.text = RemainingTime.ToString();
+
     }
 
     void SetStats()
