@@ -6,6 +6,8 @@ public class GameSetter : MonoBehaviour
 {
     [Header("Setting")]
     public float stageMaxAbilityCount;
+    public bool defaultSetting;
+    public float stageAbilityStart;
 
     public PlayerScript ps;
     private void OnTriggerEnter(Collider collision)
@@ -13,7 +15,17 @@ public class GameSetter : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             ps.maxAbilityCount = stageMaxAbilityCount;
-            ps.abilityCount = ps.maxAbilityCount;
+
+            if (defaultSetting == true)
+            {
+
+                ps.abilityCount = ps.maxAbilityCount;
+            }
+            else
+            {
+                ps.abilityCount = stageAbilityStart;
+            }
+
             Destroy(gameObject);
         }
     
