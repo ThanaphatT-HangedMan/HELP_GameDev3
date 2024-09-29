@@ -87,7 +87,7 @@ public class Wallrunning : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         upwardRunnings = Input.GetKey(upwardRunKey);
-        downwardRunnings = Input.GetKey(downwardRunkey);
+        //downwardRunnings = Input.GetKey(downwardRunkey);
 
         //State 1 - Wallrunning
         if((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && !exitWall)
@@ -209,10 +209,7 @@ public class Wallrunning : MonoBehaviour
     {      
         //Enter Exiting wall state
         exitWall = true;
-        exitWallTimer = exitWallTime;
-        
-        if (ps.jumpRemaining < 2)
-            ps.jumpRemaining = 2;
+        exitWallTimer = exitWallTime;       
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
         Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;
