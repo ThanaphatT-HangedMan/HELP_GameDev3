@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     [Header("Movement")]
     private float moveSpeed;
@@ -12,9 +13,19 @@ public class Player : MonoBehaviour
     public float sprintSpeed;
     public float slideSpeed;
     public float wallRunSpeed;
+    public float dashSpeed;
+    public float dashSpeedChangeFactor;
+    public float abilityCount;
+    public float maxAbilityCount;
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
+    private MovementState lastState;
+    private bool keepMomentum;
+    private float speedChangeFactor;
+
+    public float maxYSpeed;
+
 
     public float speedIncreaseMultiplier;
     public float slopeIncreaseMultiplier;
@@ -26,7 +37,9 @@ public class Player : MonoBehaviour
     public float jumpCoolDown;
     public float airMultiplier;
     bool jumpable;
-    public float jumpcost;
+    bool doubleJumpable;
+    public int maxJumpCount;
+    public int jumpRemaining;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -45,11 +58,10 @@ public class Player : MonoBehaviour
     private Coroutine recharge;
     public float ChargeRate;
 
-
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
-
+    public KeyCode RestartKey = KeyCode.R;
 
     public Transform orientation;
     float horizontalInput;
@@ -62,12 +74,12 @@ public class Player : MonoBehaviour
     public MovementState state;
     public bool sliding;
     public bool wallrunning;
-
+    public bool dashing;
     public enum MovementState
     {
         walking,
-        sprinting,
         sliding,
+        dashing,
         wallrunning,
         air,
     }
@@ -75,6 +87,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        abilityCount = maxAbilityCount;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         ResetJump();
@@ -88,15 +101,33 @@ public class Player : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
+        
+        //limiting max jump when ability goes to 0
+        if (abilityCount <= 0)
+        {
+            maxJumpCount = 1;
+        }
+        else
+        {
+            maxJumpCount = 2;
+        }
 
-        if (Input.GetButtonDown("Fire1")) //left ctrl
-                                          //StaminaRecharge(5);
+        //Set ability count to not exceed max ability count
+        if (abilityCount > maxAbilityCount)
+        {
+            abilityCount = maxAbilityCount;
+        }
 
-            //handle drag
-            if (grounded)
+
+        //handle drag
+        if (grounded && state != MovementState.dashing || wallrunning && state != MovementState.dashing)
+            {
                 rb.drag = groundDrag;
-            else
-                rb.drag = 0;
+                jumpRemaining = maxJumpCount;
+            }
+
+        else
+            rb.drag = 0;
     }
 
     private void FixedUpdate()
@@ -110,30 +141,47 @@ public class Player : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //when to Jump
-        if (Input.GetKey(jumpKey) && jumpable && grounded)
+        if(Input.GetKeyDown(jumpKey) && jumpable && (grounded || jumpRemaining > 0))
         {
             jumpable = false;
-
             Jump();
+
+            // If performing a double jump (jumpRemaining goes from 2 to 1)
+            if (jumpRemaining == 1 && abilityCount > 0)
+            {
+                abilityCount--;
+            }
 
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
-    }
 
-    private void StateHandler()
-    {
-        // Mode - Sprint
-        if (grounded && Input.GetKey(sprintKey))
+
+
+
+        if (Input.GetKeyDown(RestartKey))
         {
-            state = MovementState.sprinting;
-            desiredMoveSpeed = sprintSpeed;
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
 
+
+    }
+    
+    private void StateHandler()
+    {
+
         // Mode - Walking
-        else if (grounded)
+        if (grounded)
         {
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
+        }
+
+        // Mode - Dashing
+        else if (dashing)
+        {
+            state = MovementState.dashing;
+            desiredMoveSpeed = dashSpeed;
+            speedChangeFactor = dashSpeedChangeFactor;
         }
 
         // Mode - Slide
@@ -144,7 +192,7 @@ public class Player : MonoBehaviour
             if (OnSlope() && rb.velocity.y < 0.1f)
                 desiredMoveSpeed = slideSpeed;
 
-            else
+            else 
                 desiredMoveSpeed = sprintSpeed;
         }
 
@@ -159,7 +207,13 @@ public class Player : MonoBehaviour
         else
         {
             state = MovementState.air;
+
+            if (desiredMoveSpeed < sprintSpeed)
+                desiredMoveSpeed = walkSpeed;
+            else
+                desiredMoveSpeed = sprintSpeed;
         }
+
 
         //checked if desired move speed has changed?
         if (Math.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4f && moveSpeed != 0)
@@ -172,7 +226,25 @@ public class Player : MonoBehaviour
             moveSpeed = desiredMoveSpeed;
         }
 
+        bool desiredMoveSpeedHasChange = desiredMoveSpeed != lastDesiredMoveSpeed;
+        if (lastState == MovementState.dashing) keepMomentum = true;
+
+        if (desiredMoveSpeedHasChange)
+        {
+            if (keepMomentum)
+            {
+                StopAllCoroutines();
+                StartCoroutine(SmoothLerpMoveSpeed());
+            }
+            else
+            {
+                StopAllCoroutines();
+                moveSpeed = desiredMoveSpeed;
+            }
+        }
+
         lastDesiredMoveSpeed = desiredMoveSpeed;
+        lastState = state;
     }
 
     private IEnumerator SmoothLerpMoveSpeed()
@@ -182,24 +254,20 @@ public class Player : MonoBehaviour
         float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
         float startValue = moveSpeed;
 
+        float bootsFactor = speedChangeFactor;
+
         while (time < difference)
         {
             moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
 
-            if (OnSlope())
-            {
-                float slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
-                float slopeAngleIncrease = 1 + (slopeAngle / 90f);
-
-                time += Time.deltaTime * speedIncreaseMultiplier * slopeIncreaseMultiplier * slopeAngleIncrease;
-            }
-            else
-                time += Time.deltaTime * speedIncreaseMultiplier;
+            time += Time.deltaTime * bootsFactor;
 
             yield return null;
         }
 
         moveSpeed = desiredMoveSpeed;
+        speedChangeFactor = 1f;
+        keepMomentum = false;
     }
 
     private void MovePlayer()
@@ -207,8 +275,8 @@ public class Player : MonoBehaviour
         //Calculate Movement Direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-
+        rb.AddForce(moveDirection.normalized * moveSpeed  * 10f, ForceMode.Force);
+                
         //on Slope
         if (OnSlope() && !exitingSlope)
         {
@@ -222,16 +290,16 @@ public class Player : MonoBehaviour
         //on ground
         else if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-
+        
         //on air
-        else if (!grounded)
+        else if(!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
 
 
-
+          
 
         //Turn of gravity while on slope
-        if (!wallrunning) rb.useGravity = !OnSlope();
+        if(!wallrunning) rb.useGravity = !OnSlope();
 
     }
 
@@ -241,7 +309,7 @@ public class Player : MonoBehaviour
         //Limiting speed on slope
         if (OnSlope() && !exitingSlope)
         {
-            if (rb.velocity.magnitude > moveSpeed)
+            if(rb.velocity.magnitude > moveSpeed)
                 rb.velocity = rb.velocity.normalized * moveSpeed;
         }
 
@@ -258,6 +326,9 @@ public class Player : MonoBehaviour
             }
         }
 
+        //limit Y Vel
+        if(maxYSpeed != 0 && rb.velocity.y > maxYSpeed)
+            rb.velocity = new Vector3(rb.velocity.x, maxYSpeed, rb.velocity.z);
 
 
     }
@@ -265,56 +336,25 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         exitingSlope = true;
-
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
-        stamina = stamina - jumpcost;
-        staminaBar.fillAmount = stamina / maxStamina;
-
-
-
-
-        if (recharge != null) StopCoroutine(recharge);
-        recharge = StartCoroutine(RechargeStamina());
-
     }
 
     private void ResetJump()
     {
-        jumpable = true;
+        jumpRemaining -= 1;
         exitingSlope = false;
+        jumpable = true;
     }
+    
 
-    /*    private void StaminaRecharge(float rechargeAmount)
-        {
-            stamina -= rechargeAmount;
-            stamina = Mathf.Clamp(stamina, 0, 100);
-
-            staminaBar.fillAmount = stamina / maxStamina;
-        }*/
-    private IEnumerator RechargeStamina()
-    {
-        yield return new WaitForSeconds(1f);
-
-        while (stamina < maxStamina)
-        {
-            stamina += ChargeRate / 10f;
-        }
-
-        if (stamina > maxStamina)
-            stamina = maxStamina;
-
-        staminaBar.fillAmount = stamina / maxStamina;
-
-        yield return new WaitForSeconds(.1f);
-    }
 
     public bool OnSlope()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        if(Physics.Raycast(transform.position,Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
             return angle < maxSlopeAngle && angle != 0;
@@ -327,4 +367,6 @@ public class Player : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
+
+
 }

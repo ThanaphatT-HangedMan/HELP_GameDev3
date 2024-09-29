@@ -276,10 +276,10 @@ GameObject:
   - component: {fileID: 3724144038540421236}
   - component: {fileID: 673821458858238283}
   - component: {fileID: 4334191134370064551}
-  - component: {fileID: 588604905046038073}
   - component: {fileID: 2552774585926680843}
   - component: {fileID: 8413132869130855305}
   - component: {fileID: 2367847044823813751}
+  - component: {fileID: 3041354659171571338}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -381,24 +381,6 @@ MonoBehaviour:
   sliding: 0
   wallrunning: 0
   dashing: 0
---- !u!114 &588604905046038073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5059880335839521664}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee8c17dcd1c8a745897d968eb2450ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orientation: {fileID: 2548229923090354414}
-  playerObj: {fileID: 3724144038540421236}
-  maxSlideTime: 0.75
-  slideForce: 200
-  slideYScale: 0.5
-  slideKey: 306
 --- !u!114 &2552774585926680843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,11 +405,11 @@ MonoBehaviour:
   wallRunForce: 200
   maxWallRunTime: 900
   jumpKey: 32
-  upwardRunKey: 304
-  downwardRunkey: 306
+  upwardRunKey: 306
+  downwardRunkey: 0
   downwardRunnings: 0
   exitWallTime: 0.1
-  useGravity: 1
+  useGravity: 0
   gravityCounterForce: 15
   wallCheckDistance: 0.7
   minJumpHeight: 2
@@ -476,6 +458,19 @@ MonoBehaviour:
   Timertext: {fileID: 4423027395205783110}
   RemainingTime: 999
   FinalTime: {fileID: 0}
+--- !u!114 &3041354659171571338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059880335839521664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa48302060d44e4f850c6722b86dfb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghost: {fileID: 11400000, guid: eb0fadf9ffa1f324487e97d869100600, type: 2}
 --- !u!1 &5652498059884120117
 GameObject:
   m_ObjectHideFlags: 0
