@@ -8,13 +8,16 @@ public class CanvasText : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI abilityLeft, maxAbility, Timertext;
     [SerializeField] float RemainingTime;
+    [SerializeField] float MaxTime;
     PlayerScript ps;
     public TextMeshProUGUI FinalTime;
+    [SerializeField] Image bar;
 
     void Start()
     {
         ps = GetComponent<PlayerScript>();
         SetStats();  
+        bar.fillAmount = 1;
     }
 
     private void Update()
@@ -23,11 +26,14 @@ public class CanvasText : MonoBehaviour
         if (RemainingTime > 0)
         {
             RemainingTime -= Time.deltaTime;
+            float fillAmount = RemainingTime / MaxTime;
+            bar.fillAmount = Mathf.Clamp(fillAmount, 0, 1);
         }
         else if (RemainingTime < 0)
         {
             RemainingTime = 0;
             Timertext.color = Color.red;
+            bar.fillAmount = 0;
         }
 
 
