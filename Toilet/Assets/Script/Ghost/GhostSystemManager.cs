@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class GhostSystemManager : MonoBehaviour
 {
-    public Ghost ghost; 
-    private GhostRecoder ghostRecorder;
-    private GhostPlayer ghostPlayer;
+    public Ghost ghost;
 
     private bool managerRecord = false;
     private bool managerReplay = false;
 
     void Start()
     {
-        ghostRecorder = GetComponent<GhostRecoder>();
-        ghostPlayer = GetComponent<GhostPlayer>();
     }
 
     void Update()
