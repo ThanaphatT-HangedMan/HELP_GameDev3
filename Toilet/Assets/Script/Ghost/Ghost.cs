@@ -23,4 +23,14 @@ public class Ghost : ScriptableObject
         rotation.Clear();
     }
 
+    public void Record()
+    {
+        isRecord = true;
+    }
+
+    public void Replay()
+    {
+        isReplay = true;
+    }
+
 }

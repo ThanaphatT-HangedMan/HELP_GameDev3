@@ -1198,7 +1198,7 @@ GameObject:
   - component: {fileID: 1214274463}
   - component: {fileID: 1214274462}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Ghost
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1973,8 +1973,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1684608652925424734, guid: ca6a2dcbe91aa3e4db25290afc5ef839, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1964031541}
   m_SourcePrefab: {fileID: 100100000, guid: ca6a2dcbe91aa3e4db25290afc5ef839, type: 3}
+--- !u!1 &1964031537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1684608652925424734, guid: ca6a2dcbe91aa3e4db25290afc5ef839, type: 3}
+  m_PrefabInstance: {fileID: 1964031536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1964031541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964031537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34db4853aba6bea44a1d0425916e6631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghost: {fileID: 11400000, guid: eb0fadf9ffa1f324487e97d869100600, type: 2}
 --- !u!1 &1966192075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,17 +2258,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3736952854065696487, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1003
-      objectReference: {fileID: 0}
     - target: {fileID: 5059880335839521664, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5225173680648823334, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -565
+    - target: {fileID: 9168694575458443490, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
