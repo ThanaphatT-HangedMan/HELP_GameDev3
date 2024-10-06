@@ -25,7 +25,7 @@ public class CanvasText : MonoBehaviour
         SetStats();
         if (RemainingTime > 0)
         {
-            RemainingTime -= Time.deltaTime;
+            RemainingTime  -= Time.deltaTime;
             float fillAmount = RemainingTime / MaxTime;
             bar.fillAmount = Mathf.Clamp(fillAmount, 0, 1);
         }
