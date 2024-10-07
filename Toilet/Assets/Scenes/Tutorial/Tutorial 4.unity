@@ -3444,7 +3444,7 @@ GameObject:
   - component: {fileID: 1384046558}
   - component: {fileID: 1384046557}
   - component: {fileID: 1384046556}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DefaultWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3472,7 +3472,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1968501201}
+  m_Mesh: {fileID: 1272339320}
 --- !u!33 &1384046557
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -3514,7 +3514,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -4372,7 +4372,7 @@ GameObject:
   - component: {fileID: 1637371636}
   - component: {fileID: 1637371635}
   - component: {fileID: 1637371634}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DefaultWall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4400,7 +4400,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 950949721}
+  m_Mesh: {fileID: 1733097389}
 --- !u!33 &1637371635
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -4442,7 +4442,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -5705,7 +5705,7 @@ GameObject:
   - component: {fileID: 2044518214}
   - component: {fileID: 2044518213}
   - component: {fileID: 2044518212}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DefaultWall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6686,7 +6686,7 @@ GameObject:
   - component: {fileID: 8679101845159829706}
   - component: {fileID: 600032536327114164}
   - component: {fileID: 3638998484597407164}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DefaultWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

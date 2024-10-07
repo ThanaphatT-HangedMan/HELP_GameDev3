@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 728898311}
   - component: {fileID: 728898310}
   - component: {fileID: 728898309}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DefaultWall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +682,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -1499,7 +1499,7 @@ GameObject:
   - component: {fileID: 954682443}
   - component: {fileID: 954682442}
   - component: {fileID: 954682441}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DefaultWall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1569,7 +1569,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -3333,7 +3333,7 @@ GameObject:
   - component: {fileID: 1999941370}
   - component: {fileID: 1999941369}
   - component: {fileID: 1999941368}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DefaultWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3403,7 +3403,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -3933,7 +3933,7 @@ GameObject:
   - component: {fileID: 6255422150357285610}
   - component: {fileID: 2805278577424324500}
   - component: {fileID: 2034982434399545244}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DefaultWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
