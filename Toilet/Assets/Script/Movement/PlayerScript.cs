@@ -62,6 +62,8 @@ public class PlayerScript : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode RestartKey = KeyCode.R;
+    public KeyCode RecordKey = KeyCode.J;
+    public KeyCode ReplayKey = KeyCode.K;
 
     public Transform orientation;
     float horizontalInput;
@@ -75,6 +77,7 @@ public class PlayerScript : MonoBehaviour
     public bool sliding;
     public bool wallrunning;
     public bool dashing;
+
     public enum MovementState
     {
         walking,
@@ -155,7 +158,10 @@ public class PlayerScript : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
 
-
+        if (Input.GetKeyDown(RecordKey))
+        {
+            
+        }
 
 
         if (Input.GetKeyDown(RestartKey))

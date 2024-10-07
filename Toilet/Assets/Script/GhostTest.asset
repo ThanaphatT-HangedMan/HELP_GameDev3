@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc4a035e297a4d243aba4b498708f402, type: 3}
-  m_Name: Ghost
+  m_Name: GhostTest
   m_EditorClassIdentifier: 
   isRecord: 0
   isReplay: 0
-  recordFrequency: 0
+  recordFrequency: 240
   timeStamp: []
   position: []
   rotation: []
