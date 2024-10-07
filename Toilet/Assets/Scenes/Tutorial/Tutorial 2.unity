@@ -725,6 +725,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &588652577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5825724346461494452, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
+  m_PrefabInstance: {fileID: 1310355744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &684375500
 Mesh:
   m_ObjectHideFlags: 0
@@ -1875,6 +1880,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: PooMedal
+      value: 
+      objectReference: {fileID: 588652577}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: FinalTime
       value: 

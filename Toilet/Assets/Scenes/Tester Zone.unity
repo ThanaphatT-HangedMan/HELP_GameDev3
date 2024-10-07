@@ -1322,26 +1322,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinishPoint_PlaceHolder
       objectReference: {fileID: 0}
-    - target: {fileID: 3302191294343968343, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
-      propertyPath: m_Name
-      value: Silver_Medal
-      objectReference: {fileID: 0}
-    - target: {fileID: 3540220058998016248, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
-      propertyPath: m_Name
-      value: Bronze_Medal
-      objectReference: {fileID: 0}
-    - target: {fileID: 4232959122426873094, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c1fff023dec77b44a80cb1eb1d66813c, type: 3}
-    - target: {fileID: 4283335589116318541, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cc4d965573c057d43934c04b0883ca39, type: 3}
-    - target: {fileID: 4604015954077157526, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 51e4bc50c9a585f4884c6c53a5ba5101, type: 3}
     - target: {fileID: 4821443690748681507, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.6241536
@@ -1382,10 +1362,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5064715911663746331, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 969f5ae3a1af13c49a2509bb63562e68, type: 3}
     - target: {fileID: 5824462481438844041, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
       propertyPath: ct
       value: 
@@ -1398,26 +1374,6 @@ PrefabInstance:
       propertyPath: ps
       value: 
       objectReference: {fileID: 1039880388}
-    - target: {fileID: 5825724346461494452, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
-      propertyPath: m_Name
-      value: Poop_Medal
-      objectReference: {fileID: 0}
-    - target: {fileID: 6167754584981861090, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b4b09ae6b58ea2d4ea08da4d80c55542, type: 3}
-    - target: {fileID: 6737436854946834962, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a32d85ffc331ae144aec8724444aa0b2, type: 3}
-    - target: {fileID: 8715640784616335066, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cee8e035352818d43964a6dc548ba4a4, type: 3}
-    - target: {fileID: 9007816650695009684, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
-      propertyPath: m_Name
-      value: Gold_Medal
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2157,10 +2113,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: MaxTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: PooMedal
       value: 
       objectReference: {fileID: 663536673}
@@ -2180,10 +2132,6 @@ PrefabInstance:
       propertyPath: SilverImage
       value: 
       objectReference: {fileID: 528941336}
-    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: RemainingTime
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3724144038540421236, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

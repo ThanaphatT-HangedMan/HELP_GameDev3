@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 7481489435557264498}
   - component: {fileID: 6167754584981861090}
   m_Layer: 5
-  m_Name: Poop
+  m_Name: Poop_Medal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,14 +220,14 @@ RectTransform:
   m_GameObject: {fileID: 5825724346461494452}
   m_LocalRotation: {x: -0.0025172976, y: -0.014171532, z: 0.068360396, w: 0.9975569}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.158, y: 2.7098005, z: 2.158}
+  m_LocalScale: {x: 4.077154, y: 3.763642, z: 2.9972463}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2618904323286554438}
   m_LocalEulerAnglesHint: {x: -0.177, y: -1.64, z: 7.843}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 744, y: 43}
+  m_AnchoredPosition: {x: 770, y: 18}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7481489435557264498
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5e9faa05f008d6641a1179b2b1039ced, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b4b09ae6b58ea2d4ea08da4d80c55542, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -276,6 +276,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4821443690748681507}
     m_Modifications:
+    - target: {fileID: 183682535854575455, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
+      propertyPath: m_Name
+      value: Silver_Medal
+      objectReference: {fileID: 0}
     - target: {fileID: 794630989639233102, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -356,6 +360,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1205820290828628382, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 51e4bc50c9a585f4884c6c53a5ba5101, type: 3}
+    - target: {fileID: 1454196700282186309, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc4d965573c057d43934c04b0883ca39, type: 3}
     - target: {fileID: 1507084140471648366, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
       propertyPath: m_Name
       value: StageClear_Canvas
@@ -363,6 +375,14 @@ PrefabInstance:
     - target: {fileID: 1507084140471648366, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576632408664226830, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c1fff023dec77b44a80cb1eb1d66813c, type: 3}
+    - target: {fileID: 2197277594171634160, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
+      propertyPath: m_Name
+      value: Bronze_Medal
       objectReference: {fileID: 0}
     - target: {fileID: 2794968412635201608, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
       propertyPath: m_AnchorMax.y
@@ -436,6 +456,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 489
       objectReference: {fileID: 0}
+    - target: {fileID: 5934933639036542108, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
+      propertyPath: m_Name
+      value: Gold_Medal
+      objectReference: {fileID: 0}
     - target: {fileID: 6307838752841043258, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -464,6 +488,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6317145282638962642, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cee8e035352818d43964a6dc548ba4a4, type: 3}
     - target: {fileID: 6562055793083142841, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -488,10 +516,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 272
       objectReference: {fileID: 0}
+    - target: {fileID: 7572331624775287827, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 969f5ae3a1af13c49a2509bb63562e68, type: 3}
     - target: {fileID: 7964541088411549001, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
       propertyPath: m_Name
       value: FinalTimer
       objectReference: {fileID: 0}
+    - target: {fileID: 8277334812087767834, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a32d85ffc331ae144aec8724444aa0b2, type: 3}
     - target: {fileID: 9217262992458829143, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

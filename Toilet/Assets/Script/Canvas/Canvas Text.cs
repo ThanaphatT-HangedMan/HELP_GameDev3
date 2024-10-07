@@ -67,7 +67,6 @@ public class CanvasText : MonoBehaviour
             Timertext.color = Color.red;
             bar.fillAmount = 0;
             PooMedal.SetActive(true);
-            PooFace.SetActive(true);
         }
 
 
@@ -100,26 +99,35 @@ public class CanvasText : MonoBehaviour
 
     public void PlayerCheck()
     {
-        // Check conditions and activate the appropriate face
-
-        if (RemainingTime < MaxTime * 0.25f)
+        if (RemainingTime <= 0)
+        {
+            LowFace.SetActive(false);
+            MidFace.SetActive(false);
+            HighFace.SetActive(false);
+            PooFace.SetActive(true);
+        }
+        else if (RemainingTime < MaxTime * 0.25f)
         {
             LowFace.SetActive(false);
             MidFace.SetActive(false);
             HighFace.SetActive(true);
+            PooFace.SetActive(false);
         }
         else if (RemainingTime < MaxTime * 0.5f)
         {
             LowFace.SetActive(false);
             MidFace.SetActive(true);
             HighFace.SetActive(false);
+            PooFace.SetActive(false);
         }
         else if (RemainingTime < MaxTime)
         {
             LowFace.SetActive(true);
             MidFace.SetActive(false);
             HighFace.SetActive(false);
+            PooFace.SetActive(false);
         }
+
     }
 
 
