@@ -582,10 +582,10 @@ MonoBehaviour:
   MidFace: {fileID: 7658400904451999555}
   HighFace: {fileID: 8641394017132624140}
   PooFace: {fileID: 1459377763793680586}
-  RemainingTime: 5
-  MaxTime: 5
+  RemainingTime: 20
+  MaxTime: 20
   FinalTime: {fileID: 0}
-  bar: {fileID: 378738664877798069}
+  bar: {fileID: 0}
 --- !u!114 &3041354659171571338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 565105287216816626}
   - component: {fileID: 6187108564088056704}
   - component: {fileID: 8003394428324079541}
-  - component: {fileID: 2132053531389468859}
+  - component: {fileID: 1063885980057421033}
   m_Layer: 0
   m_Name: PlayerCam
   m_TagString: Untagged
@@ -830,7 +830,7 @@ MonoBehaviour:
   SensY: 5
   orientation: {fileID: 2548229923090354414}
   camHolder: {fileID: 382729203276540272}
---- !u!114 &2132053531389468859
+--- !u!114 &1063885980057421033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
