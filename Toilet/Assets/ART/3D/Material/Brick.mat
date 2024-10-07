@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: URPConcrete
-  m_Shader: {fileID: -6465566751694194690, guid: 42d0e25dcec3a884797f7c00e3110c44, type: 3}
+  m_Name: Brick
+  m_Shader: {fileID: -6465566751694194690, guid: 38ced3f02c86ccf43a26c7b59fb32c7b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,20 +23,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Normal:
-        m_Texture: {fileID: 2800000, guid: 92eff3d2cc7e7a14e832ec887dc06aa4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalFromTexture_f34e174f0da5455db77fb06f3480dbb0_Texture_0_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 6dddb93eb084a4a4a8dbc0861c9519cd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: 92eff3d2cc7e7a14e832ec887dc06aa4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Triplanar_afe7621793834a83ad5546e4fd822ab5_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 92eff3d2cc7e7a14e832ec887dc06aa4, type: 3}
+    - _Triplanar_813f4a83478c46ee8849de44beff5683_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 61e19a57b962b954186fa3079955b7bc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -56,10 +44,9 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0}
-    - _Color_1: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 0.4792453, g: 0.32806408, b: 0.2776006, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &1392766238947545195
+--- !u!114 &4076601910146147762
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
