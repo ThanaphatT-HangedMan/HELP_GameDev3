@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.24432874, g: 0.4950015, b: 0.79410845, a: 1}
+  m_IndirectSpecularColor: {r: 0.24457784, g: 0.4958925, b: 0.794091, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1374,6 +1374,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: PooMedal
+      value: 
+      objectReference: {fileID: 732387038}
+    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: FinalTime
       value: 
       objectReference: {fileID: 1105543261}
@@ -1381,6 +1385,18 @@ PrefabInstance:
       propertyPath: Timertext
       value: 
       objectReference: {fileID: 466574238}
+    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: BronzeImage
+      value: 
+      objectReference: {fileID: 1599621961}
+    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: GoldenImage
+      value: 
+      objectReference: {fileID: 1821003220}
+    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: SilverImage
+      value: 
+      objectReference: {fileID: 2122631146}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: RemainingTime
       value: 30
@@ -2136,6 +2152,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 712dc6cc3e0f61b4b804122e2ce66aaa, type: 3}
+--- !u!1 &732387038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5825724346461494452, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
+  m_PrefabInstance: {fileID: 1105543260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &756864354
 Mesh:
   m_ObjectHideFlags: 0
@@ -5647,6 +5668,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fef845f4141b99429e394c22eef8c18, type: 3}
+--- !u!1 &1599621961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3540220058998016248, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
+  m_PrefabInstance: {fileID: 1105543260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1641724926
 Mesh:
   m_ObjectHideFlags: 0
@@ -5869,6 +5895,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca6a2dcbe91aa3e4db25290afc5ef839, type: 3}
+--- !u!1 &1821003220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9007816650695009684, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
+  m_PrefabInstance: {fileID: 1105543260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1851268695
 GameObject:
   m_ObjectHideFlags: 0
@@ -7960,6 +7991,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &2122631146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3302191294343968343, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
+  m_PrefabInstance: {fileID: 1105543260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &2123411719
 Mesh:
   m_ObjectHideFlags: 0
