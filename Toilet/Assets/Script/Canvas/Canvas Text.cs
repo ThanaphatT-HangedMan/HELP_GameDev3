@@ -6,22 +6,54 @@ using UnityEngine.UI;
 
 public class CanvasText : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] TextMeshProUGUI abilityLeft, maxAbility, Timertext;
+
+
+    [Header("MedalCheck")] 
+    [SerializeField] float BronzeTime;
+    [SerializeField] GameObject BronzeImage;
+
+    [SerializeField] float SilverTime;
+    [SerializeField] GameObject SilverImage;
+
+    [SerializeField] float GoldenTime;
+    [SerializeField] GameObject GoldenImage;
+
+    [SerializeField] GameObject PooMedal;
+
+    [Header("Face Check")]
+    [SerializeField] GameObject LowFace;
+    [SerializeField] GameObject MidFace;
+    [SerializeField] GameObject HighFace;
+    [SerializeField] GameObject PooFace;
+
+    [Header("Time")]
     [SerializeField] float RemainingTime;
     [SerializeField] float MaxTime;
-    PlayerScript ps;
     public TextMeshProUGUI FinalTime;
     [SerializeField] Image bar;
+
+    PlayerScript ps;
 
     void Start()
     {
         ps = GetComponent<PlayerScript>();
         SetStats();  
         bar.fillAmount = 1;
+        BronzeImage.SetActive(false);
+        SilverImage.SetActive(false);
+        GoldenImage.SetActive(false);
+        PooMedal.SetActive(false);
+        PooFace.SetActive(false);
+        LowFace.SetActive(false);
+        MidFace.SetActive(false);
+        HighFace.SetActive(false);
     }
 
     private void Update()
     {
+        PlayerCheck();
         SetStats();
         if (RemainingTime > 0)
         {
@@ -34,11 +66,12 @@ public class CanvasText : MonoBehaviour
             RemainingTime = 0;
             Timertext.color = Color.red;
             bar.fillAmount = 0;
+            PooMedal.SetActive(true);
+            PooFace.SetActive(true);
         }
 
 
     }
-
     void SetStats()
     {
         abilityLeft.text = ps.abilityCount.ToString();
@@ -46,4 +79,49 @@ public class CanvasText : MonoBehaviour
         Timertext.text = RemainingTime.ToString();
         FinalTime.text = Timertext.text;
     }
+
+    public void MedalCheck()
+    {
+        if (RemainingTime > GoldenTime)
+        {
+            GoldenImage.SetActive(true);
+        }
+        
+        if (RemainingTime > SilverTime)
+        {
+            SilverImage.SetActive(true);
+        }
+        
+        if (RemainingTime > BronzeTime)
+        {
+            BronzeImage.SetActive(true);
+        }
+    }
+
+    public void PlayerCheck()
+    {
+        // Check conditions and activate the appropriate face
+
+        if (RemainingTime < MaxTime * 0.25f)
+        {
+            LowFace.SetActive(false);
+            MidFace.SetActive(false);
+            HighFace.SetActive(true);
+        }
+        else if (RemainingTime < MaxTime * 0.5f)
+        {
+            LowFace.SetActive(false);
+            MidFace.SetActive(true);
+            HighFace.SetActive(false);
+        }
+        else if (RemainingTime < MaxTime)
+        {
+            LowFace.SetActive(true);
+            MidFace.SetActive(false);
+            HighFace.SetActive(false);
+        }
+    }
+
+
+
 }

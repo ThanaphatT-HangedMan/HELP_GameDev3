@@ -20,6 +20,7 @@ public class FinishPoint : MonoBehaviour
             pc.GetComponent<PlayerCamera>().enabled = false;
             ps.GetComponent<PlayerScript>().enabled = false;
             ct.GetComponent<CanvasText>().enabled = false;
+            ct.MedalCheck();
             GameOver();
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
