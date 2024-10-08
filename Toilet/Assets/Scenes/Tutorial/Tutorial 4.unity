@@ -3190,6 +3190,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1283067859}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: MaxTime
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: PooMedal
       value: 
       objectReference: {fileID: 4513858}

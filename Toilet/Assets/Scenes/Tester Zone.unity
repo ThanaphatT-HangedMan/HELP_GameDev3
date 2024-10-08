@@ -2796,17 +2796,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 40.728}
---- !u!114 &124863300318636681 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 378738664877798069, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-  m_PrefabInstance: {fileID: 358623642617550908}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &358623642617550908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2815,22 +2804,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 253847031310164358, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1294421812997467329, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: bar
-      value: 
-      objectReference: {fileID: 124863300318636681}
-    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: MaxTime
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: PooMedal
       value: 
@@ -2851,10 +2824,6 @@ PrefabInstance:
       propertyPath: SilverImage
       value: 
       objectReference: {fileID: 528941336}
-    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: RemainingTime
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 3724144038540421236, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2894,18 +2863,6 @@ PrefabInstance:
     - target: {fileID: 3724144038540421236, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4024433409557370489, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4567773483753254202, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -911
-      objectReference: {fileID: 0}
-    - target: {fileID: 4567773483753254202, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -467
       objectReference: {fileID: 0}
     - target: {fileID: 5059880335839521664, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: m_Name

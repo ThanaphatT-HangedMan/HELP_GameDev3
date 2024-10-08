@@ -1408,6 +1408,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1190460898}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: MaxTime
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: PooMedal
       value: 
       objectReference: {fileID: 91149308}
@@ -1425,11 +1429,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: GoldenTime
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: SilverTime
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: BronzeImage
@@ -1445,7 +1449,7 @@ PrefabInstance:
       objectReference: {fileID: 91149305}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: RemainingTime
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3724144038540421236, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: m_LocalPosition.x

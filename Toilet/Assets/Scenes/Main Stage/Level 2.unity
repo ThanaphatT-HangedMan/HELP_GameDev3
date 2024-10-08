@@ -607,6 +607,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 992526780}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: GoldenTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: SilverTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: BronzeImage
       value: 
       objectReference: {fileID: 1701452595}
