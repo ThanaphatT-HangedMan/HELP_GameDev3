@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class SecretItem : MonoBehaviour
 {
     public PlayerScript ps;
 
@@ -11,7 +11,7 @@ public class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            ps.abilityCount += 3;
+            ps.Secret = true;
             Destroy(gameObject);
         }
     }
