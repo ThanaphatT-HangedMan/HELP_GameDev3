@@ -65,6 +65,9 @@ public class PlayerScript : MonoBehaviour
     public KeyCode RecordKey = KeyCode.J;
     public KeyCode ReplayKey = KeyCode.K;
 
+    [Header("Item")]
+    public bool Secret = false;
+
     public Transform orientation;
     float horizontalInput;
     float verticalInput;
