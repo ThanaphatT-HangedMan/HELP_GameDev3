@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Global Volume Profile
+  m_Name: DefaultGlobalVolume
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 1857756038159208765}
---- !u!114 &1857756038159208765
+  - {fileID: 5811020976884635272}
+--- !u!114 &5811020976884635272
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29,16 +29,16 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.11058026, g: 0.18528765, b: 0.3509434, a: 1}
+    m_Value: {r: 0.22767526, g: 0.25813988, b: 0.3735848, a: 1}
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.45
+    m_Value: 0.5
   smoothness:
-    m_OverrideState: 1
-    m_Value: 0.38
+    m_OverrideState: 0
+    m_Value: 0.2
   rounded:
     m_OverrideState: 0
     m_Value: 0
