@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -57,6 +58,7 @@ public class PlayerScript : MonoBehaviour
     public float movementCost;
     private Coroutine recharge;
     public float ChargeRate;
+    public VisualEffect speedLine;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -107,6 +109,7 @@ public class PlayerScript : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
+        
         
         //limiting max jump when ability goes to 0
         if (abilityCount <= 0)
@@ -183,6 +186,7 @@ public class PlayerScript : MonoBehaviour
         {
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
+            speedLine.enabled = false;
         }
 
         // Mode - Dashing
@@ -191,6 +195,7 @@ public class PlayerScript : MonoBehaviour
             state = MovementState.dashing;
             desiredMoveSpeed = dashSpeed;
             speedChangeFactor = dashSpeedChangeFactor;
+            speedLine.enabled = true;
         }
 
         // Mode - Slide
