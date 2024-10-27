@@ -22,6 +22,9 @@ public class CanvasText : MonoBehaviour
 
     [SerializeField] GameObject PooMedal;
 
+    [SerializeField] bool SecretCheck;
+    [SerializeField] GameObject SecretMedal;
+
     [Header("Face Check")]
     [SerializeField] GameObject LowFace;
     [SerializeField] GameObject MidFace;
@@ -49,6 +52,7 @@ public class CanvasText : MonoBehaviour
         LowFace.SetActive(false);
         MidFace.SetActive(false);
         HighFace.SetActive(false);
+        SecretMedal.SetActive(false);
     }
 
     private void Update()
@@ -95,6 +99,13 @@ public class CanvasText : MonoBehaviour
         {
             BronzeImage.SetActive(true);
         }
+
+        if (ps.Secret == true)
+        {
+            SecretMedal.SetActive(true);
+        }
+
+
     }
 
     public void PlayerCheck()
