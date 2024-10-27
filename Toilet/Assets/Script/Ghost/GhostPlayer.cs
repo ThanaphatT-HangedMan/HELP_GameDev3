@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GhostPlayer : MonoBehaviour
@@ -28,7 +27,7 @@ public class GhostPlayer : MonoBehaviour
 
     private void GetIndex()
     {
-        for (int i = 0; i < ghost.timeStamp.Count - 2; i++)
+        for (int i = 0; i < ghost.timeStamp.Count - 1; i++)
         {
             if (ghost.timeStamp[i] == timeValue)
             {
@@ -36,7 +35,7 @@ public class GhostPlayer : MonoBehaviour
                 index2 = i;
                 return;
             }
-            else if (ghost.timeStamp[i] < timeValue & timeValue < ghost.timeStamp[i + 1])
+            else if (ghost.timeStamp[i] < timeValue && timeValue < ghost.timeStamp[i + 1])
             {
                 index1 = i;
                 index2 = i + 1;
@@ -53,15 +52,13 @@ public class GhostPlayer : MonoBehaviour
         if (index1 == index2)
         {
             this.transform.position = ghost.position[index1];
-            this.transform.eulerAngles = ghost.position[index1];
+            this.transform.rotation = ghost.rotation[index1];
         }
         else
         {
             float interpolationFactor = (timeValue - ghost.timeStamp[index1]) / (ghost.timeStamp[index2] - ghost.timeStamp[index1]);
-
             this.transform.position = Vector3.Lerp(ghost.position[index1], ghost.position[index2], interpolationFactor);
-            this.transform.eulerAngles = Vector3.Lerp(ghost.position[index1], ghost.position[index2], interpolationFactor);
+            this.transform.rotation = Quaternion.Slerp(ghost.rotation[index1], ghost.rotation[index2], interpolationFactor);
         }
     }
-
 }

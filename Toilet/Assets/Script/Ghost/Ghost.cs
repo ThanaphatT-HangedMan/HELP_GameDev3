@@ -13,7 +13,7 @@ public class Ghost : ScriptableObject
 
     public List<float> timeStamp;
     public List<Vector3> position;
-    public List<Vector3> rotation;
+    public List<Quaternion> rotation;
 
 
     public void ResetData()

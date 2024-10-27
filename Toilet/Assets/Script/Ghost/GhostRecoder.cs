@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
-public class GhostRecoder : MonoBehaviour
+public class GhostRecorder : MonoBehaviour
 {
     public Ghost ghost;
     private float timer;
@@ -17,22 +16,21 @@ public class GhostRecoder : MonoBehaviour
             timeValue = 0;
             timer = 0;
         }
-
     }
 
     void Update()
     {
-        timer += Time.unscaledDeltaTime;
-        timeValue += Time.unscaledDeltaTime;
+        float deltaTime = Time.unscaledDeltaTime;
+        timer += deltaTime;
+        timeValue += deltaTime;
 
-        if (ghost.isRecord & timer >= 1 / ghost.recordFrequency)
+        if (ghost.isRecord && timer >= 1 / ghost.recordFrequency)
         {
             ghost.timeStamp.Add(timeValue);
             ghost.position.Add(this.transform.position);
-            ghost.rotation.Add(this.transform.eulerAngles);
+            ghost.rotation.Add(this.transform.rotation);
 
             timer = 0;
         }
     }
-
 }
