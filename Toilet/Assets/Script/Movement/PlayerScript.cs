@@ -100,6 +100,7 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         ResetJump();
+        speedLine.enabled = false;
     }
 
     private void Update()
