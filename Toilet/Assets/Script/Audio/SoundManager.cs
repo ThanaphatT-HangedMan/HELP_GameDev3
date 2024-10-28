@@ -15,9 +15,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        InitialiseVolume();
-        Debug.Log(soundSetting.MasterVolumeName);
-        
+        InitialiseVolume();      
     }
 
     private void InitialiseVolume()
@@ -32,4 +30,45 @@ public class SoundManager : MonoBehaviour
         slider_Master_Volume.value = soundSetting.MasterVolume;
     }
 
+    public void SetMusicVolume(float vol)
+    {
+        soundSetting.audioMixer.SetFloat(soundSetting.MusicVolumeName, vol);
+        soundSetting.MusicVolume = vol;
+        slider_Master_Volume.value = soundSetting.MusicVolume;
+    }
+
+    public void SetSFXVolume(float vol)
+    {
+        soundSetting.audioMixer.SetFloat(soundSetting.SFXVolumeName, vol);
+        soundSetting.SFXVolume = vol;
+        slider_Master_Volume.value = soundSetting.SFXVolume;
+    }
+
+    public void SetGameSFXVolume(float vol)
+    {
+        soundSetting.audioMixer.SetFloat(soundSetting.GameSFXVolumeName, vol);
+        soundSetting.GameSFXVolume = vol;
+        slider_Master_Volume.value = soundSetting.GameSFXVolume;
+    }
+
+    public void SetFartVolume(float vol)
+    {
+        soundSetting.audioMixer.SetFloat(soundSetting.FartVolumeName, vol);
+        soundSetting.FartVolume = vol;
+        slider_Master_Volume.value = soundSetting.FartVolume;
+    }
+
+    public void SetOtherSFXVolume(float vol)
+    {
+        soundSetting.audioMixer.SetFloat(soundSetting.OtherSFXVolumeName, vol);
+        soundSetting.OtherSFXVolume = vol;
+        slider_Master_Volume.value = soundSetting.OtherSFXVolume;
+    }
+
+    public void SetUIVolume(float vol)
+    {
+        soundSetting.audioMixer.SetFloat(soundSetting.UIVolumeName, vol);
+        soundSetting.UIVolume = vol;
+        slider_Master_Volume.value = soundSetting.UIVolume;
+    }
 }

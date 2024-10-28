@@ -10,6 +10,7 @@ public class FinishPoint : MonoBehaviour
     public PlayerCamera pc;
     public PlayerScript ps;
     public CanvasText ct;
+    public Bringupseting st;
 
     [SerializeField] TextMeshProUGUI finalText;
 
@@ -19,6 +20,7 @@ public class FinishPoint : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("Goal");
             pc.GetComponent<PlayerCamera>().enabled = false;
+            st.GetComponent<MouseLook>().enabled = false;
             ps.GetComponent<PlayerScript>().enabled = false;
             ct.GetComponent<CanvasText>().enabled = false;
             ct.MedalCheck();

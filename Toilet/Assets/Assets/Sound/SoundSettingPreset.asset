@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 4c210b1cc27722d4f9268886b5af94d7, type: 2}
   MasterVolumeName: Master Volume
-  MasterVolume: 0
+  MasterVolume: -6.851946
   MusicVolumeName: Music Volume
-  MusicVolume: 0
-  SFXVolumeName: SFX Volume Volume
-  SFXVolume: 0
+  MusicVolume: -51.069958
+  SFXVolumeName: SFX Volume
+  SFXVolume: -6.851946
   GameSFXVolumeName: Game SFX Volume
-  GameSFXVolume: 0
+  GameSFXVolume: -3.7160683
   FartVolumeName: Fart Volume
-  FartVolume: 0
+  FartVolume: 6.0386014
   OtherSFXVolumeName: Other SFX Volume
-  OtherSFXVolume: 0
+  OtherSFXVolume: 12.192947
   UIVolumeName: UI Volume
-  UIVolume: 0
+  UIVolume: 4.7607613

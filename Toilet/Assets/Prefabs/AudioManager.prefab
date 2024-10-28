@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1353781003674504270}
   - component: {fileID: 504541929826589008}
+  - component: {fileID: 7201463208369713216}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -66,3 +67,44 @@ MonoBehaviour:
     loop: 0
     output: {fileID: -1310368641668497725, guid: 4c210b1cc27722d4f9268886b5af94d7, type: 2}
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 5f94a4781fa351948a61b34bb3da272e, type: 3}
+    name: Secret
+    volume: 1
+    pitch: 1
+    loop: 0
+    output: {fileID: 2266692129729464649, guid: 4c210b1cc27722d4f9268886b5af94d7, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: f52ede67abbcbfd4eafa2dfda0e008a5, type: 3}
+    name: Item
+    volume: 1
+    pitch: 1
+    loop: 0
+    output: {fileID: 2266692129729464649, guid: 4c210b1cc27722d4f9268886b5af94d7, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 831412c89957e3d4d8f8158b4c28740f, type: 3}
+    name: Goal
+    volume: 0.628
+    pitch: 1
+    loop: 0
+    output: {fileID: 2266692129729464649, guid: 4c210b1cc27722d4f9268886b5af94d7, type: 2}
+    source: {fileID: 0}
+--- !u!114 &7201463208369713216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7927259993947105065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd5369083a828e4d96caf331b03b946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundSetting: {fileID: 11400000, guid: 8a17eb3140a59ac42bf90d9d22f768b7, type: 2}
+  slider_Master_Volume: {fileID: 0}
+  slider_Music_Volume: {fileID: 0}
+  slider_SFX_Volume: {fileID: 0}
+  slider_GameSFX_Volume: {fileID: 0}
+  slider_Fart_Volume: {fileID: 0}
+  slider_OtherSFX_Volume: {fileID: 0}
+  slider_UI_Volume: {fileID: 0}
