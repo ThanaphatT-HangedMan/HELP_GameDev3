@@ -15,7 +15,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -2788841676701265339}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 1
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -34,7 +34,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 1198444104184747927}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 4
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -95,7 +95,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 2348916695393172332}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 7
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -115,25 +115,29 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 884415650b54ad84a94784ce0cbb21e8
+    name: Fart Volume
   - guid: 3a2e7f6009e65084784e39e5debd7a44
-    name: MyExposedParam 2
+    name: Game SFX Volume
   - guid: 9d8f0a9d16fb024439b2692552ff85d3
-    name: MyExposedParam 4
+    name: Master Volume
   - guid: 5392d512a25dfc343b95ccd227163e31
-    name: MyExposedParam
+    name: Music Volume
+  - guid: 5424e7b8560919641ac272fddd7b2528
+    name: Other SFX Volume
   - guid: 7104ecc7e1a5b8a4f9c52b144eda9c03
-    name: MyExposedParam 1
+    name: SFX Volume
   - guid: 0d3f3b60c39632440a30bc2a5d4a0e40
-    name: MyExposedParam 3
+    name: UI Volume
   m_AudioMixerGroupViews:
   - guids:
     - 5fb157ed3d9eddb4e904477047c22000
-    - ee8a4e6c349be3b4682d7cd4a76edc97
     - f13cc96eca5f1da49954809ed5eff763
+    - ee8a4e6c349be3b4682d7cd4a76edc97
     - 362afdb81b1500645b33c4abccddc2d9
-    - 02bbfa2a93bb30540afd894fffe46fba
     - ad53b9badf341de40817a193731f28f6
     - ac1475cb09796804b87cb5f8a5b925f2
+    - 02bbfa2a93bb30540afd894fffe46fba
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -154,7 +158,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 3
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -183,6 +187,9 @@ AudioMixerSnapshotController:
   m_SnapshotID: 04973a757e9f77f449293239e2e0eba2
   m_FloatValues:
     3a2e7f6009e65084784e39e5debd7a44: -0.025776558
+    884415650b54ad84a94784ce0cbb21e8: 0
+    5424e7b8560919641ac272fddd7b2528: 0.04171297
+    0ebe611f8e2e6ce4fb1b6b787c4c2290: 0
   m_TransitionOverrides: {}
 --- !u!243 &504050861222989087
 AudioMixerGroupController:
@@ -201,7 +208,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -4516789136587999608}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 6
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -236,7 +243,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 8522743025087442773}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 7
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -246,7 +253,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Other
+  m_Name: Other SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: ac1475cb09796804b87cb5f8a5b925f2
   m_Children: []
@@ -255,7 +262,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -4148393159624747795}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 7
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
