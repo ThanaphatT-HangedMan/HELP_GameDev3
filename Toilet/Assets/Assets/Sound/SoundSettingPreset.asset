@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a05a694a60d83749932ed240cd9cd5f, type: 3}
+  m_Name: SoundSettingPreset
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 4c210b1cc27722d4f9268886b5af94d7, type: 2}
+  MasterVolumeName: Master Volume
+  MasterVolume: 0
+  MusicVolumeName: Music Volume
+  MusicVolume: 0
+  SFXVolumeName: SFX Volume Volume
+  SFXVolume: 0
+  GameSFXVolumeName: Game SFX Volume
+  GameSFXVolume: 0
+  FartVolumeName: Fart Volume
+  FartVolume: 0
+  OtherSFXVolumeName: Other SFX Volume
+  OtherSFXVolume: 0
+  UIVolumeName: UI Volume
+  UIVolume: 0
