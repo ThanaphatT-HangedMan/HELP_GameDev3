@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghost: {fileID: 11400000, guid: eb0fadf9ffa1f324487e97d869100600, type: 2}
+  animator: {fileID: 0}
 --- !u!1001 &9150905516335547495
 PrefabInstance:
   m_ObjectHideFlags: 0

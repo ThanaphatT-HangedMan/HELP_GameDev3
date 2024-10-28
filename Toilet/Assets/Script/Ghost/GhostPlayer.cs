@@ -8,10 +8,12 @@ public class GhostPlayer : MonoBehaviour
     private float timeValue;
     private int index1;
     private int index2;
+    public Animator animator;
 
     private void Awake()
     {
         timeValue = 0;
+        animator.SetFloat("Speed", 1);
     }
 
     void Update()
@@ -21,7 +23,7 @@ public class GhostPlayer : MonoBehaviour
         if (ghost.isReplay)
         {
             GetIndex();
-            SetTransform();
+            SetTransform();         
         }
     }
 

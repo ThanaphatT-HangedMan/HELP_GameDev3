@@ -480,6 +480,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5825724346461494452, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
   m_PrefabInstance: {fileID: 1619226404}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &695253158 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3428393514157177334, guid: f4d463531938def4f90c28770340f19a, type: 3}
+  m_PrefabInstance: {fileID: 3639075654887645870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,6 +2413,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 3402123273712004314, guid: f4d463531938def4f90c28770340f19a, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 695253158}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
