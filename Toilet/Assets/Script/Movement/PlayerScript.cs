@@ -82,6 +82,7 @@ public class PlayerScript : MonoBehaviour
     public bool sliding;
     public bool wallrunning;
     public bool dashing;
+    public AudioManager audioManager;
 
     public enum MovementState
     {
@@ -154,6 +155,7 @@ public class PlayerScript : MonoBehaviour
         {
             jumpable = false;
             Jump();
+            audioManager.Play("JumpSound");
 
             // If performing a double jump (jumpRemaining goes from 2 to 1)
             if (jumpRemaining == 1 && abilityCount > 0)
@@ -163,12 +165,6 @@ public class PlayerScript : MonoBehaviour
 
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
-
-        if (Input.GetKeyDown(RecordKey))
-        {
-            
-        }
-
 
         if (Input.GetKeyDown(RestartKey))
         {

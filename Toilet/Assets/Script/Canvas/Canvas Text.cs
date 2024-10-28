@@ -82,6 +82,7 @@ public class CanvasText : MonoBehaviour
         else if (RemainingTime < 0)
         {
             RemainingTime = 0;
+            FindObjectOfType<AudioManager>().Play("TimeOver");
             Timertext.color = Color.red;
             bar.fillAmount = 0;
             PooMedal.SetActive(true);

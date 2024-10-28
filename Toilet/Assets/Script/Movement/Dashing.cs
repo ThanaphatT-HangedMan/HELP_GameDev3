@@ -44,6 +44,7 @@ public class Dashing : MonoBehaviour
     {
         if(Input.GetKey (dashKey) && ps.state != PlayerScript.MovementState.wallrunning && ps.abilityCount > 0)
         {
+            FindObjectOfType<AudioManager>().Play("DashSound");
             Dash();
         }
 
@@ -71,6 +72,7 @@ public class Dashing : MonoBehaviour
          
         Vector3 direction = GetDirection(forwardT);
         Vector3 forceToApply = direction * dashForce;
+
 
         if(disableGravity)
             rb.useGravity = false;
