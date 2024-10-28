@@ -11,6 +11,7 @@ public class SecretItem : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().Play("Secret");
             ps.Secret = true;
             Destroy(gameObject);
         }

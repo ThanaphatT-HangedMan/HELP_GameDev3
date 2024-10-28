@@ -11,6 +11,7 @@ public class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().Play("Item");
             ps.abilityCount += 3;
             Destroy(gameObject);
         }
