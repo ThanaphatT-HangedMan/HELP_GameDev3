@@ -7,7 +7,14 @@ using UnityEngine.UI;
 public class CanvasText : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] TextMeshProUGUI abilityLeft, maxAbility, Timertext;
+    [SerializeField] TextMeshProUGUI Timertext;
+
+    [Header("Ability")]
+    public float abilityLeft;
+    public float maxAbility;
+    [SerializeField] GameObject ability1;
+    [SerializeField] GameObject ability2;
+    [SerializeField] GameObject ability3;
 
 
     [Header("MedalCheck")] 
@@ -53,10 +60,17 @@ public class CanvasText : MonoBehaviour
         MidFace.SetActive(false);
         HighFace.SetActive(false);
         SecretMedal.SetActive(false);
+
+
+        abilityLeft = ps.abilityCount;
+        maxAbility = ps.maxAbilityCount;
     }
 
     private void Update()
     {
+        abilityLeft = ps.abilityCount;
+        maxAbility = ps.maxAbilityCount;
+
         PlayerCheck();
         SetStats();
         if (RemainingTime > 0)
@@ -77,10 +91,35 @@ public class CanvasText : MonoBehaviour
     }
     void SetStats()
     {
-        abilityLeft.text = ps.abilityCount.ToString();
-        maxAbility.text = ps.maxAbilityCount.ToString();
+        ps.abilityCount = abilityLeft;
+        ps.maxAbilityCount = maxAbility;
         Timertext.text = RemainingTime.ToString();
         FinalTime.text = Timertext.text;
+
+        if (abilityLeft == 3)
+        {
+            ability1.SetActive(true);
+            ability2.SetActive(true);
+            ability3.SetActive(true);
+        }
+        else if (abilityLeft == 2)
+        {
+            ability1.SetActive(false);
+            ability2.SetActive(true);
+            ability3.SetActive(true);
+        }
+        else if (abilityLeft == 1)
+        {
+            ability1.SetActive(false);
+            ability2.SetActive(false);
+            ability3.SetActive(true);
+        }
+        else
+        {
+            ability1.SetActive(false);
+            ability2.SetActive(false);
+            ability3.SetActive(false);
+        }
     }
 
     public void MedalCheck()
