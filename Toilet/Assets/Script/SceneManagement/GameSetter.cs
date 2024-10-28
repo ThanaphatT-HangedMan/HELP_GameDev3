@@ -14,6 +14,9 @@ public class GameSetter : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+                FindObjectOfType<AudioManager>().Play("BGM");
+
+
             ps.maxAbilityCount = stageMaxAbilityCount;
 
             if (defaultSetting == true)

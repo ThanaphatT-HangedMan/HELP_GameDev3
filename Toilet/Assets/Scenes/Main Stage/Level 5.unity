@@ -1245,6 +1245,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1821003220}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: SecretMedal
+      value: 
+      objectReference: {fileID: 1105543262}
+    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: SilverImage
       value: 
       objectReference: {fileID: 2122631146}
@@ -2800,6 +2804,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 712dc6cc3e0f61b4b804122e2ce66aaa, type: 3}
+--- !u!114 &838032385 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7190076779692760212, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+  m_PrefabInstance: {fileID: 466574235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b590fd9e15e17a438edcd8c2f9bc13e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &956799804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3613,6 +3628,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 466574236}
     - target: {fileID: 5824462481438844041, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
+      propertyPath: st
+      value: 
+      objectReference: {fileID: 838032385}
+    - target: {fileID: 5824462481438844041, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
       propertyPath: levelName
       value: Level 6
       objectReference: {fileID: 0}
@@ -3632,6 +3651,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1105543262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7106366810400019442, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
+  m_PrefabInstance: {fileID: 1105543260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1119079168
 Mesh:
   m_ObjectHideFlags: 0
@@ -8287,7 +8311,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2123411719}
+  m_Mesh: {fileID: 1104191505}
 --- !u!33 &2075872550
 MeshFilter:
   m_ObjectHideFlags: 10

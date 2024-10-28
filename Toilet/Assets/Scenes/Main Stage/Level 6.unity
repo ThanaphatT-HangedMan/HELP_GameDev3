@@ -2829,6 +2829,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 478485151}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: SecretMedal
+      value: 
+      objectReference: {fileID: 1902079422}
+    - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: SilverImage
       value: 
       objectReference: {fileID: 478485152}
@@ -4927,6 +4931,10 @@ PrefabInstance:
       propertyPath: ps
       value: 
       objectReference: {fileID: 258827720}
+    - target: {fileID: 5824462481438844041, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
+      propertyPath: st
+      value: 
+      objectReference: {fileID: 646611388}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7146,6 +7154,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &646611388 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7190076779692760212, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+  m_PrefabInstance: {fileID: 258827719}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b590fd9e15e17a438edcd8c2f9bc13e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &682162729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19679,6 +19698,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1902079422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7106366810400019442, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
+  m_PrefabInstance: {fileID: 478485148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1913584819
 GameObject:
   m_ObjectHideFlags: 0

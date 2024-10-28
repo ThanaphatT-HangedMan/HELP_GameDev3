@@ -179,7 +179,7 @@ public class PlayerScript : MonoBehaviour
 
         // Mode - Walking
         if (grounded)
-        {
+        {            
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
             speedLine.enabled = false;
@@ -299,7 +299,11 @@ public class PlayerScript : MonoBehaviour
 
         //on ground
         else if (grounded)
+        {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        }
+            
+
         
         //on air
         else if(!grounded)
