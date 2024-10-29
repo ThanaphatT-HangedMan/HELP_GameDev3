@@ -7,8 +7,12 @@ public class MouseLook : MonoBehaviour
 {
     public Slider slider;
     public float mousesentivity = 100f;
-    public Transform playerbody;
+    
     float xRotation = 0f;
+    float yRotation = 0f;
+
+    public Transform orientation;
+    public Transform camHolder;
 
     void Start()
     {
@@ -25,11 +29,13 @@ public class MouseLook : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mousesentivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mousesentivity * Time.deltaTime;
 
+        yRotation += mouseX;
         xRotation -= mouseY;
+
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        playerbody.Rotate(Vector3.up * mouseX);
+        camHolder.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 
     public void AdjustSpeed(float newSpeed)

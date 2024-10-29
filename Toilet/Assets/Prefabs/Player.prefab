@@ -4887,7 +4887,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 6951288973501113623}
   mousesentivity: 100
-  playerbody: {fileID: 3724144038540421236}
+  orientation: {fileID: 2548229923090354414}
+  camHolder: {fileID: 382729203276540272}
 --- !u!114 &7190076779692760212
 MonoBehaviour:
   m_ObjectHideFlags: 0
