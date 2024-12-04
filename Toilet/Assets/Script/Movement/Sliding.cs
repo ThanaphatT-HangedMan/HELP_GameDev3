@@ -68,7 +68,7 @@ public class Sliding : MonoBehaviour
         Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         //normal slide
-        if (!ps.OnSlope() || rb.velocity.y > - 0.1f)
+        if (!ps.OnSlope() || rb.linearVelocity.y > - 0.1f)
         {
             rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
             slideTimer -= Time.deltaTime;

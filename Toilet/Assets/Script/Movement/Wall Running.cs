@@ -161,7 +161,7 @@ public class Wallrunning : MonoBehaviour
 
         wallRunTimer = maxWallRunTime;
 
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
         // apply camera effects
         cam.DoFov(90f);
@@ -188,9 +188,9 @@ public class Wallrunning : MonoBehaviour
 
         // Upward/downward force
         if (upwardRunnings)
-            rb.velocity = new Vector3(rb.velocity.x, wallClimbSpeed, rb.velocity.z);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, wallClimbSpeed, rb.linearVelocity.z);
         if (downwardRunnings)
-            rb.velocity = new Vector3(rb.velocity.x, -wallClimbSpeed, rb.velocity.z);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, -wallClimbSpeed, rb.linearVelocity.z);
 
         // Push toward wall
         if (!(wallLeft && horizontalInput > 0) && !(wallRight && horizontalInput < 0))
@@ -223,7 +223,7 @@ public class Wallrunning : MonoBehaviour
         Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;
 
         // Reset y velocity and add Force 
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         rb.AddForce(forceToApply, ForceMode.Impulse);
     }
 }

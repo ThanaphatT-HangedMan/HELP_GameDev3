@@ -133,12 +133,12 @@ public class PlayerScript : MonoBehaviour
         //handle drag
         if (grounded && state != MovementState.dashing || wallrunning && state != MovementState.dashing)
             {
-                rb.drag = groundDrag;
+                rb.linearDamping = groundDrag;
                 jumpRemaining = maxJumpCount;
             }
 
         else
-            rb.drag = 0;
+            rb.linearDamping = 0;
     }
 
     private void FixedUpdate()
@@ -200,7 +200,7 @@ public class PlayerScript : MonoBehaviour
         {
             state = MovementState.sliding;
 
-            if (OnSlope() && rb.velocity.y < 0.1f)
+            if (OnSlope() && rb.linearVelocity.y < 0.1f)
                 desiredMoveSpeed = slideSpeed;
 
             else 
@@ -293,7 +293,7 @@ public class PlayerScript : MonoBehaviour
         {
             rb.AddForce(GetSlopeMoveDirection(moveDirection) * moveSpeed * 20f, ForceMode.Force);
 
-            if (rb.velocity.y > 0)
+            if (rb.linearVelocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
 
         }
@@ -324,26 +324,26 @@ public class PlayerScript : MonoBehaviour
         //Limiting speed on slope
         if (OnSlope() && !exitingSlope)
         {
-            if(rb.velocity.magnitude > moveSpeed)
-                rb.velocity = rb.velocity.normalized * moveSpeed;
+            if(rb.linearVelocity.magnitude > moveSpeed)
+                rb.linearVelocity = rb.linearVelocity.normalized * moveSpeed;
         }
 
         else
         {
             //Normal Limit Velocity
-            Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            Vector3 flatVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
             //Limit Velocity
             if (flatVelocity.magnitude > moveSpeed)
             {
                 Vector3 limitedVel = flatVelocity.normalized * moveSpeed;
-                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+                rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
             }
         }
 
         //limit Y Vel
-        if(maxYSpeed != 0 && rb.velocity.y > maxYSpeed)
-            rb.velocity = new Vector3(rb.velocity.x, maxYSpeed, rb.velocity.z);
+        if(maxYSpeed != 0 && rb.linearVelocity.y > maxYSpeed)
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, maxYSpeed, rb.linearVelocity.z);
 
 
     }
@@ -352,7 +352,7 @@ public class PlayerScript : MonoBehaviour
     {
         exitingSlope = true;
         // reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
