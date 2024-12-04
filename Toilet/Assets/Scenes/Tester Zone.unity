@@ -2301,6 +2301,10 @@ PrefabInstance:
       propertyPath: SilverImage
       value: 
       objectReference: {fileID: 528941336}
+    - target: {fileID: 3041354659171571338, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: ghost
+      value: 
+      objectReference: {fileID: 11400000, guid: 88389a23b7979c9488169d50483730df, type: 2}
     - target: {fileID: 3724144038540421236, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2413,6 +2417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 3402123273712004314, guid: f4d463531938def4f90c28770340f19a, type: 3}
+      propertyPath: ghost
+      value: 
+      objectReference: {fileID: 11400000, guid: 88389a23b7979c9488169d50483730df, type: 2}
     - target: {fileID: 3402123273712004314, guid: f4d463531938def4f90c28770340f19a, type: 3}
       propertyPath: animator
       value: 
