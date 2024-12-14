@@ -47,7 +47,7 @@ public class Wallrunning : MonoBehaviour
 
     [Header("References")]
     public Transform orientation;
-    public PlayerCamera cam;
+    //public PlayerCamera cam;
     private PlayerScript ps;
     private Rigidbody rb;
     private MouseLook mouseLook;  // เพิ่ม MouseLook reference
@@ -156,21 +156,18 @@ public class Wallrunning : MonoBehaviour
     {
         ps.wallrunning = true;
 
-        // ปิด MouseLook ระหว่าง Wallrun
-        mouseLook.enabled = false;
-
         wallRunTimer = maxWallRunTime;
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
         // apply camera effects
-        cam.DoFov(90f);
+        //cam.DoFov(90f);
 
-        if (wallLeft)
-            cam.DoTilt(-5f);
+        //if (wallLeft)
+           // cam.DoTilt(-5f);
 
-        if (wallRight)
-            cam.DoTilt(5f);
+       // if (wallRight)
+           // cam.DoTilt(5f);
     }
 
     private void WallRunningMovement()
@@ -205,12 +202,9 @@ public class Wallrunning : MonoBehaviour
     {
         ps.wallrunning = false;
 
-        // เปิด MouseLook เมื่อจบ Wallrun
-        mouseLook.enabled = true;
-
         // Reset camera
-        cam.DoFov(80f);
-        cam.DoTilt(0f);
+        //cam.DoFov(80f);
+        //cam.DoTilt(0f);
     }
 
     private void WallJump()
