@@ -7,7 +7,7 @@ public class FinishPoint : MonoBehaviour
 {
     [Header ("Reference")]
     public GameObject gameOverUI;
-    public PlayerCamera pc;
+    public ThirdPersonCamera pc;
     public PlayerScript ps;
     public CanvasText ct;
     public Bringupseting st;
@@ -19,7 +19,7 @@ public class FinishPoint : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             FindObjectOfType<AudioManager>().Play("Goal");
-            pc.GetComponent<PlayerCamera>().enabled = false;
+            pc.GetComponent<ThirdPersonCamera>().enabled = false;
             st.GetComponent<MouseLook>().enabled = false;
             ps.GetComponent<PlayerScript>().enabled = false;
             ct.GetComponent<CanvasText>().enabled = false;
