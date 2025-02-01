@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +8,8 @@ using UnityEngine.VFX;
 
 public class PlayerScript : MonoBehaviour
 {
+    [Header("Camera")]
+    public Transform playerCamera; 
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
@@ -148,17 +150,17 @@ public class PlayerScript : MonoBehaviour
 
     private void MyInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal"); // รับค่าปุ่ม A/D หรือ ลูกศรซ้าย/ขวา
+        verticalInput = Input.GetAxisRaw("Vertical");     // รับค่าปุ่ม W/S หรือ ลูกศรขึ้น/ลง
 
-        //when to Jump
-        if(Input.GetKeyDown(jumpKey) && jumpable && (grounded || jumpRemaining > 0))
+        // เมื่อกดปุ่มกระโดด
+        if (Input.GetKeyDown(jumpKey) && jumpable && (grounded || jumpRemaining > 0))
         {
             jumpable = false;
             Jump();
             audioManager.Play("JumpSound");
 
-            // If performing a double jump (jumpRemaining goes from 2 to 1)
+            // หากกระโดดครั้งที่ 2 (Double Jump)
             if (jumpRemaining == 1 && abilityCount > 0)
             {
                 abilityCount--;
@@ -167,14 +169,13 @@ public class PlayerScript : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCoolDown);
         }
 
+        // เมื่อกดปุ่มรีสตาร์ท
         if (Input.GetKeyDown(RestartKey))
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
-
-
     }
-    
+
     private void StateHandler()
     {
 
@@ -283,39 +284,37 @@ public class PlayerScript : MonoBehaviour
 
     private void MovePlayer()
     {
-        //Calculate Movement Direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        // คำนวณทิศทางจากกล้อง
+        Vector3 forward = playerCamera.forward;
+        Vector3 right = playerCamera.right;
+        forward.y = 0f; // ตัดแกน Y เพื่อป้องกันการเคลื่อนที่ขึ้น-ลง
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
 
-        rb.AddForce(moveDirection.normalized * moveSpeed  * 10f, ForceMode.Force);
-                
-        //on Slope
+        // คำนวณทิศทางการเคลื่อนที่ใหม่จากกล้อง
+        moveDirection = forward * verticalInput + right * horizontalInput;
+
+        // นำไปประยุกต์กับแรง
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+
+        // ส่วนที่เหลือเหมือนเดิม...
         if (OnSlope() && !exitingSlope)
         {
             rb.AddForce(GetSlopeMoveDirection(moveDirection) * moveSpeed * 20f, ForceMode.Force);
-
             if (rb.linearVelocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
-
         }
-
-        //on ground
         else if (grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         }
-            
-
-        
-        //on air
-        else if(!grounded)
+        else if (!grounded)
+        {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
 
-
-          
-
-        //Turn of gravity while on slope
-        if(!wallrunning) rb.useGravity = !OnSlope();
-
+        if (!wallrunning) rb.useGravity = !OnSlope();
     }
 
     private void SpeedControl()
@@ -382,6 +381,7 @@ public class PlayerScript : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
+
 
 
 }
