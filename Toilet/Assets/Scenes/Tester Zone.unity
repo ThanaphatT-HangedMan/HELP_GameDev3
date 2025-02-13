@@ -964,6 +964,30 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3540220058998016248, guid: c1aa0eb38968af947a310976e499c07a, type: 3}
   m_PrefabInstance: {fileID: 1619226404}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &828376020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8038196729485511169, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+  m_PrefabInstance: {fileID: 358623642617550908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &828376021 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3613739777028606657, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+  m_PrefabInstance: {fileID: 358623642617550908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &828376022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828376020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 889b56370ce6f624c8f3eb365ea6cfe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps: {fileID: 4097208662223810715}
+  animator: {fileID: 828376021}
 --- !u!1 &852906987
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,10 +2470,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2107329551353985873, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2367847044823813751, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: PooMedal
       value: 
@@ -2474,10 +2494,6 @@ PrefabInstance:
       propertyPath: SilverImage
       value: 
       objectReference: {fileID: 528941336}
-    - target: {fileID: 2533316175330653693, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3724144038540421236, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2525,7 +2541,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8038196729485511169, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 828376022}
   m_SourcePrefab: {fileID: 100100000, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
 --- !u!114 &2604872900501050955 stripped
 MonoBehaviour:

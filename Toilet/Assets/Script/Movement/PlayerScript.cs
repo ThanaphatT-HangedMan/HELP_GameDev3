@@ -73,8 +73,8 @@ public class PlayerScript : MonoBehaviour
     public bool Secret = false;
 
     public Transform orientation;
-    float horizontalInput;
-    float verticalInput;
+    public float horizontalInput;
+    public float verticalInput;
 
     Vector3 moveDirection;
 
@@ -112,8 +112,7 @@ public class PlayerScript : MonoBehaviour
 
         MyInput();
         SpeedControl();
-        StateHandler();
-        
+        StateHandler();       
         
         //limiting max jump when ability goes to 0
         if (abilityCount <= 0)
@@ -138,9 +137,11 @@ public class PlayerScript : MonoBehaviour
                 rb.linearDamping = groundDrag;
                 jumpRemaining = maxJumpCount;
             }
-
         else
             rb.linearDamping = 0;
+
+        Debug.Log("horizontal input = " + horizontalInput);
+        Debug.Log("vertical input = " + verticalInput);
     }
 
     private void FixedUpdate()
@@ -182,7 +183,7 @@ public class PlayerScript : MonoBehaviour
         // Mode - Walking
         if (grounded)
         {            
-            state = MovementState.walking;
+            state = MovementState.walking;           
             desiredMoveSpeed = walkSpeed;
             speedLine.enabled = false;
         }
