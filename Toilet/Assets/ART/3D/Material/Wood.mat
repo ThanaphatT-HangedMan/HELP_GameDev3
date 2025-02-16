@@ -39,12 +39,9 @@ Material:
   m_Name: Wood
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_Parent: {fileID: 2100000, guid: 6c74e1457b085cb478b1418915b349d8, type: 2}
-  m_ModifiedSerializedProperties: 2
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _DETAIL_MAP
   - _DISABLE_SSR_TRANSPARENT
-  - _MASKMAP
-  - _NORMALMAP
   - _NORMALMAP_TANGENT_SPACE
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -66,23 +63,13 @@ Material:
         m_Texture: {fileID: 2800000, guid: c5933af2508dc2a4e90678abee655bdd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _DetailMap:
-        m_Texture: {fileID: 2800000, guid: c5933af2508dc2a4e90678abee655bdd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c5933af2508dc2a4e90678abee655bdd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MaskMap:
         m_Texture: {fileID: 2800000, guid: c5933af2508dc2a4e90678abee655bdd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Smoothness: 0.5
-    m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _NormalScale: 1
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

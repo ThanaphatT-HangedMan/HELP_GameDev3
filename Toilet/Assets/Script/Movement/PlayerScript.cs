@@ -44,6 +44,7 @@ public class PlayerScript : MonoBehaviour
     public int maxJumpCount;
     public int jumpRemaining;
 
+
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
