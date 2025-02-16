@@ -2470,6 +2470,10 @@ PrefabInstance:
       propertyPath: SilverImage
       value: 
       objectReference: {fileID: 528941336}
+    - target: {fileID: 2533316175330653693, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3724144038540421236, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2514,9 +2518,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8038196729485511169, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: m_TagString
-      value: Player
+    - target: {fileID: 5619153512219890762, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.296
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167487559733594305, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4439998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295307557977623759, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

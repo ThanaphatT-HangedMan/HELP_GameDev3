@@ -56,6 +56,7 @@ public class PlayerScript : MonoBehaviour
     private bool exitingSlope;
 
     [Header("UI")]
+    public CanvasText ct;
     public Image staminaBar;
     public float stamina, maxStamina;
     public float movementCost;
@@ -165,6 +166,7 @@ public class PlayerScript : MonoBehaviour
             // หากกระโดดครั้งที่ 2 (Double Jump)
             if (jumpRemaining == 1 && abilityCount > 0)
             {
+                ct.DecreaseTime(5);
                 abilityCount--;
             }
 

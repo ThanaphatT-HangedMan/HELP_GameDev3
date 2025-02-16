@@ -5,6 +5,7 @@ using UnityEngine;
 public class Dashing : MonoBehaviour
 {
     [Header("References")]
+    public CanvasText ct;
     public Transform orientation;
     public Transform playerCam;
     private Rigidbody rb;
@@ -60,6 +61,8 @@ public class Dashing : MonoBehaviour
 
         ps.dashing = true;
         ps.maxYSpeed = maxDashYSpeed;
+
+        ct.DecreaseTime(5);
 
         //cam.DoFov(dashFOV); 
 
