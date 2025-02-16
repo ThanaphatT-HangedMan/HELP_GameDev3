@@ -1025,7 +1025,7 @@ Transform:
   m_GameObject: {fileID: 1498469822253185455}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8666667, z: 0}
+  m_LocalPosition: {x: 0, y: 1.56, z: 0}
   m_LocalScale: {x: 1.6666666, y: 1.6666666, z: 1.6666666}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1046,7 +1046,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498469822253185455}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2760,6 +2760,7 @@ GameObject:
   - component: {fileID: 6046948534327507560}
   - component: {fileID: 5931245654536489237}
   - component: {fileID: 7045698955377148980}
+  - component: {fileID: 8228413797597273491}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -2775,8 +2776,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4701359905603307690}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25340134, y: -0.000000002870664, z: 3.8974965e-10, w: 0.9673613}
-  m_LocalPosition: {x: 0, y: 2.25, z: -4}
+  m_LocalRotation: {x: 0.05228708, y: -2.7746194e-11, z: 4.1697574e-12, w: 0.99863213}
+  m_LocalPosition: {x: 0, y: 1.13, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2802,11 +2803,11 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 6295307557977623759}
+    TrackingTarget: {fileID: 7261695936013832379}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 80
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -2901,7 +2902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Composition:
-    ScreenPosition: {x: 0, y: 0}
+    ScreenPosition: {x: 0, y: 0.25740665}
     DeadZone:
       Enabled: 0
       Size: {x: 0.2, y: 0.2}
@@ -2990,7 +2991,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4701359905603307690}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
   m_Name: 
@@ -3013,6 +3014,36 @@ MonoBehaviour:
   m_Damping: 0
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
+--- !u!114 &8228413797597273491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4701359905603307690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraRadius: 0.4
+  Decollision:
+    Enabled: 0
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 1
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Damping: 0.5
+    SmoothingTime: 0
+  TerrainResolution:
+    Enabled: 1
+    TerrainLayers:
+      serializedVersion: 2
+      m_Bits: 3073
+    MaximumRaycast: 10
+    Damping: 0.5
 --- !u!1 &4705552480166959957
 GameObject:
   m_ObjectHideFlags: 0
@@ -5094,8 +5125,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6875411304246640723}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25340134, y: -0.0000000029725393, z: 7.7866e-10, w: 0.9673613}
-  m_LocalPosition: {x: 3.563, y: 2.1020002, z: -4}
+  m_LocalRotation: {x: 0.052287087, y: -2.7603548e-11, z: 1.445286e-12, w: 0.99863213}
+  m_LocalPosition: {x: 3.563, y: 0.9820001, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5135,7 +5166,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 60.000004
+  field of view: 80
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
