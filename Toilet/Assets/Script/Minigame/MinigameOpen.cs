@@ -5,14 +5,17 @@ using UnityEngine;
 public class MinigameOpen : MonoBehaviour
 {
     [Header("Open key")]
-    public KeyCode pauseKey = KeyCode.Tab; // ปุ่มที่สามารถกำหนดเองได้ใน Inspector
-
+    [SerializeField] Transform progressBar;
+    public KeyCode pauseKey = KeyCode.Tab;
     public GameObject Fishing;
     public bool isdettingactive;
 
+    private float progress = 0f; // ตัวแปรเก็บ progress
+    private Vector3 minScale = new Vector3(0, 1, 1); // ขนาดเริ่มต้น
+    private Vector3 maxScale = new Vector3(1, 1, 1); // ขนาดสูงสุด
+
     void Update()
     {
-        // ตรวจสอบว่าผู้เล่นกดปุ่มที่กำหนดไว้
         if (Input.GetKeyDown(pauseKey))
         {
             if (!isdettingactive)
@@ -32,7 +35,11 @@ public class MinigameOpen : MonoBehaviour
         isdettingactive = true;
         this.GetComponent<MouseLook>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
-        Debug.Log("Pause");
+
+        // รีเซ็ต Progress Bar
+        ResetProgressBar();
+
+        Debug.Log("Pause - Minigame Opened & Progress Reset");
     }
 
     public void Resume()
@@ -41,6 +48,39 @@ public class MinigameOpen : MonoBehaviour
         isdettingactive = false;
         this.GetComponent<MouseLook>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
-        Debug.Log("UnPause");
+
+        // ปรับขนาด Progress Bar เป็น 0.2 ในแกน X
+        if (progressBar != null)
+        {
+            StartCoroutine(SetProgressBarSize(new Vector3(0.2f, progressBar.localScale.y, progressBar.localScale.z)));
+        }
+
+        Debug.Log("UnPause - Minigame Closed & Progress Adjusted");
+    }
+
+    void ResetProgressBar()
+    {
+        if (progressBar != null)
+        {
+            progress = 0f; // รีเซ็ตค่า progress เป็น 0
+            progressBar.localScale = minScale; // ตั้งขนาด progressBar ใหม่
+        }
+    }
+
+    IEnumerator SetProgressBarSize(Vector3 targetSize)
+    {
+        float duration = 0.2f;
+        Vector3 startSize = progressBar.localScale;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            progressBar.localScale = Vector3.Lerp(startSize, targetSize, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        progressBar.localScale = targetSize;
     }
 }
+

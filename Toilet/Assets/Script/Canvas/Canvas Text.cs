@@ -39,7 +39,7 @@ public class CanvasText : MonoBehaviour
     [SerializeField] GameObject PooFace;
 
     [Header("Time")]
-    [SerializeField] float RemainingTime;
+    [SerializeField] public float RemainingTime;
     [SerializeField] float MaxTime;
     public TextMeshProUGUI FinalTime;
     [SerializeField] Image bar;
