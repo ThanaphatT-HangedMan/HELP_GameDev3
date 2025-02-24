@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -39,10 +39,12 @@ public class CanvasText : MonoBehaviour
     [SerializeField] GameObject PooFace;
 
     [Header("Time")]
-    [SerializeField] float RemainingTime;
+    [SerializeField] public float RemainingTime;
+
     [SerializeField] float MaxTime;
     public TextMeshProUGUI FinalTime;
     [SerializeField] Image bar;
+    
 
     PlayerScript ps;
 
