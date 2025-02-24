@@ -9,40 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu/Main Menu.unity
     guid: 48e17cd905d97604fa2b8678ef6ef6f0
   - enabled: 1
-    path: Assets/Scenes/Old/Tutorial/Tutorial 1.unity
-    guid: dee42daa3614a3144bf296c892e6e1b2
+    path: Assets/Scenes/New/Level 1.unity
+    guid: 6f45c2692c32d3a4db34b198da1c1763
   - enabled: 1
-    path: Assets/Scenes/Old/Tutorial/Tutorial 2.unity
-    guid: 77c3a1073285ff44bb6c65a03283e449
+    path: Assets/Scenes/New/Level 2.unity
+    guid: 55e761cc978f906428d7c86a20a48a17
   - enabled: 1
-    path: Assets/Scenes/Old/Tutorial/Tutorial 3.unity
-    guid: 939a859fc7f764f4f8d9e2f075a49599
-  - enabled: 1
-    path: Assets/Scenes/Old/Tutorial/Tutorial 4.unity
-    guid: c988bd8b5cba6074b886b0f7ce00d60b
-  - enabled: 1
-    path: Assets/Scenes/Old/Tutorial/Tutorial 5.unity
-    guid: e9c8bada8cce92948b4ae159863a2d01
-  - enabled: 1
-    path: Assets/Scenes/Old/Tutorial/Tutorial 6.unity
-    guid: 3c84f505693681145890214844cd3b34
-  - enabled: 1
-    path: Assets/Scenes/Old/Main Stage/Level 1.unity
-    guid: c5621a6723a0348489e92a4c2b3d0aa4
-  - enabled: 1
-    path: Assets/Scenes/Old/Main Stage/Level 2.unity
-    guid: 60727ce1d40f2d948bdc2df92729d1bc
-  - enabled: 1
-    path: Assets/Scenes/Old/Main Stage/Level 3.unity
-    guid: 81acdb0e6e6a38c49a0a595d45dfa12f
-  - enabled: 1
-    path: Assets/Scenes/Old/Main Stage/Level 4.unity
-    guid: 8c015c1f60b21df47acb727b69463714
-  - enabled: 1
-    path: Assets/Scenes/Old/Main Stage/Level 5.unity
-    guid: a4a4ce08b57b66845abb579ddd47b1b6
-  - enabled: 1
-    path: Assets/Scenes/Old/Main Stage/Level 6.unity
-    guid: 3a7469dbb4b0fcb44a331b21094edae1
+    path: Assets/Scenes/New/Level 3.unity
+    guid: e81f8e37cd156a64596635f66babeae0
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -175,9 +175,13 @@ public class Wallrunning : MonoBehaviour
         rb.useGravity = useGravity;
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
-        Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
+        Vector3 cameraForward = Camera.main.transform.forward;
+        cameraForward.y = 0; // Ignore vertical tilt
 
-        if ((orientation.forward - wallForward).magnitude > (orientation.forward - -wallForward).magnitude)
+        Vector3 wallForward = Vector3.Cross(wallNormal, Vector3.up);
+
+        // Check if the player's movement is aligned with the camera direction
+        if (Vector3.Dot(cameraForward, wallForward) < 0)
             wallForward = -wallForward;
 
         // Forward force
@@ -191,7 +195,7 @@ public class Wallrunning : MonoBehaviour
 
         // Push toward wall
         if (!(wallLeft && horizontalInput > 0) && !(wallRight && horizontalInput < 0))
-            rb.AddForce(-wallNormal * 100, ForceMode.Force);
+            rb.AddForce(-wallNormal * 150, ForceMode.Force);
 
         // Weaken gravity
         if (useGravity)
