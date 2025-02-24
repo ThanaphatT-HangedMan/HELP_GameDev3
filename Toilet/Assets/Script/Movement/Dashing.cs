@@ -81,7 +81,9 @@ public class Dashing : MonoBehaviour
             rb.useGravity = false;
 
         //Decrease ability count
-        ps.abilityCount -= 1;
+        //ps.abilityCount -= 1;
+        ct.DecreaseTime(5);
+        
 
         delayForceToApply = forceToApply;
         Invoke(nameof(delayedDashForce), 0.025f);

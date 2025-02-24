@@ -2265,6 +2265,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1311167832 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6837410002946204073, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
+  m_PrefabInstance: {fileID: 358623642617550908}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1319360286
 GameObject:
   m_ObjectHideFlags: 0
@@ -3305,7 +3310,7 @@ MonoBehaviour:
   Top: {fileID: 99660415}
   Bottom: {fileID: 678160518}
   pooshit: {fileID: 729001525}
-  FTime: 5
+  FTime: 2
   Fspeed: 1
   hook: {fileID: 1145392051}
   hookpullPower: 0.01
@@ -3315,10 +3320,10 @@ MonoBehaviour:
   progressDecaySpeed: 0.1
   detectionRange: 0.1
   minScale: {x: 1, y: 0, z: 1}
-  maxScale: {x: 1, y: 1, z: 1}
+  maxScale: {x: 5, y: 5, z: 5}
   fishing: {fileID: 2117332219}
-  canvasTextScript: {fileID: 0}
-  canvasUI: {fileID: 0}
+  canvasTextScript: {fileID: 2604872900501050955}
+  canvasUI: {fileID: 1311167832}
   TimePlust: 5
 --- !u!1001 &358623642617550908
 PrefabInstance:
