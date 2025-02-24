@@ -39,11 +39,11 @@ public class PlayerScript : MonoBehaviour
     public float jumpForce;
     public float jumpCoolDown;
     public float airMultiplier;
-    bool jumpable;
+    public bool jumpable;
     bool doubleJumpable;
     public int maxJumpCount;
     public int jumpRemaining;
-
+    public bool IsJump = false;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -160,6 +160,7 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(jumpKey) && jumpable && (grounded || jumpRemaining > 0))
         {
             jumpable = false;
+            IsJump = true;
             Jump();
             audioManager.Play("JumpSound");
 
@@ -167,10 +168,10 @@ public class PlayerScript : MonoBehaviour
             if (jumpRemaining == 1 && abilityCount > 0)
             {
                 ct.DecreaseTime(5);
-                abilityCount--;
             }
 
             Invoke(nameof(ResetJump), jumpCoolDown);
+
         }
 
         // เมื่อกดปุ่มรีสตาร์ท
@@ -189,6 +190,7 @@ public class PlayerScript : MonoBehaviour
             state = MovementState.walking;           
             desiredMoveSpeed = walkSpeed;
             speedLine.enabled = false;
+            IsJump = false;
         }
 
         // Mode - Dashing
@@ -198,6 +200,7 @@ public class PlayerScript : MonoBehaviour
             desiredMoveSpeed = dashSpeed;
             speedChangeFactor = dashSpeedChangeFactor;
             speedLine.enabled = true;
+            IsJump = false;
         }
 
         // Mode - Slide
@@ -217,6 +220,7 @@ public class PlayerScript : MonoBehaviour
         {
             state = MovementState.wallrunning;
             desiredMoveSpeed = wallRunSpeed;
+            IsJump = false;
         }
 
         // Mode - Air

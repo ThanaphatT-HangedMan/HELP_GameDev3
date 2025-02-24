@@ -43,11 +43,11 @@ public class AnimationController : MonoBehaviour
     
     private void checkJump()
     {
-        if (ps.state == PlayerScript.MovementState.air)
+        if (ps.IsJump == true)
         {
             animator.SetBool("Jump", true);
         }
-        else if (ps.state != PlayerScript.MovementState.air)
+        else if (ps.IsJump == false)
         {
             animator.SetBool("Jump", false);
         }
