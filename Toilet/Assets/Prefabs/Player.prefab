@@ -2776,7 +2776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4701359905603307690}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.05228708, y: -2.7746194e-11, z: 4.1697574e-12, w: 0.99863213}
+  m_LocalRotation: {x: 0.052287098, y: 9.483551e-10, z: -4.4875922e-11, w: 0.99863213}
   m_LocalPosition: {x: 0, y: 1.13, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3567,7 +3567,7 @@ MonoBehaviour:
   exitWallTime: 0.1
   useGravity: 0
   gravityCounterForce: 15
-  wallCheckDistance: 0.7
+  wallCheckDistance: 1
   minJumpHeight: 2
   orientation: {fileID: 5726054211218302970}
 --- !u!114 &8413132869130855305
@@ -3609,8 +3609,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Timertext: {fileID: 4423027395205783110}
-  abilityLeft: 0
-  maxAbility: 0
+  abilityLeft: 3
+  maxAbility: 3
   ability1: {fileID: 8608644756685157157}
   ability2: {fileID: 2123836588202582230}
   ability3: {fileID: 2823793689819120100}
@@ -5127,7 +5127,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6875411304246640723}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.052287087, y: -2.7603548e-11, z: 1.445286e-12, w: 0.99863213}
+  m_LocalRotation: {x: 0.052287105, y: 9.486062e-10, z: -4.96678e-11, w: 0.99863213}
   m_LocalPosition: {x: 3.563, y: 0.9820001, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
