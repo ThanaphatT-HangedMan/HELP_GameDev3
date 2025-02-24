@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MinigameOpen : MonoBehaviour
 {
@@ -9,6 +7,13 @@ public class MinigameOpen : MonoBehaviour
 
     public GameObject Fishing;
     public bool isdettingactive;
+
+    private FishMinigame fishMinigame; // เพิ่มตัวแปรอ้างอิงไปยัง FishMinigame
+
+    void Start()
+    {
+        fishMinigame = Fishing.GetComponent<FishMinigame>(); // หาตัว FishMinigame จาก GameObject Fishing
+    }
 
     void Update()
     {
@@ -42,5 +47,11 @@ public class MinigameOpen : MonoBehaviour
         this.GetComponent<MouseLook>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Debug.Log("UnPause");
+
+        // รีเซ็ต Progress เมื่อกลับมาจาก Pause
+        if (fishMinigame != null)
+        {
+            fishMinigame.ResetProgress(); // รีเซ็ตค่า progress
+        }
     }
 }
