@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 99660414}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -154.84, y: 121, z: 0}
+  m_LocalPosition: {x: -154.84, y: 145.23001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3199,7 +3199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2117332220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3314,9 +3314,8 @@ MonoBehaviour:
   progressGainSpeed: 0.3
   progressDecaySpeed: 0.1
   detectionRange: 0.1
-  minScale: {x: 1, y: 0, z: 1}
+  minScale: {x: 0, y: 1, z: 1}
   maxScale: {x: 1, y: 1, z: 1}
-  canvasUI: {fileID: 2117332219}
 --- !u!1001 &358623642617550908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3397,10 +3396,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5225173680648823334, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -280
-      objectReference: {fileID: 0}
     - target: {fileID: 5726054211218302970, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3466,7 +3461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9f0d190ffb93a4a8d3b8b2d845f264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressBar: {fileID: 491678043}
   pauseKey: 102
   Fishing: {fileID: 2117332219}
   isdettingactive: 0

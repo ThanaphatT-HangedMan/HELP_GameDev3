@@ -27,9 +27,6 @@ public class FishMinigame : MonoBehaviour
     [SerializeField] float detectionRange = 0.1f; // ระยะที่ Hook กับ ปลาอยู่ด้วยกัน
     [SerializeField] Vector3 minScale = new Vector3(0, 1, 1); // ขนาดต่ำสุด
     [SerializeField] Vector3 maxScale = new Vector3(1, 1, 1); // ขนาดสูงสุด
-    [SerializeField] GameObject canvasUI;
-    [SerializeField] float TimePlust;
-    
 
     private void Update()
     {
@@ -82,35 +79,6 @@ public class FishMinigame : MonoBehaviour
         if (progressBar != null)
         {
             progressBar.localScale = Vector3.Lerp(minScale, maxScale, progress);
-        }
-
-        // ถ้า progress เต็ม (progress == 1) เพิ่มเวลา 10 วินาทีให้กับ RemainingTime
-        if (progress >= 1f)
-        {
-            if (canvasUI != null)
-            {
-                canvasUI.SetActive(false);  // ปิด Canvas หรืออะไรก็แล้วแต่
-            }
-
-            // เพิ่มเวลา 10 วินาทีให้กับ RemainingTime ใน CanvasText
-            CanvasText canvasTextScript = FindObjectOfType<CanvasText>();  // หาค่าจาก CanvasText
-            if (canvasTextScript != null)
-            {
-                canvasTextScript.RemainingTime += TimePlust;  // เพิ่มเวลา 10 วินาที
-                Debug.Log("Time increased by 10 seconds!");  // สำหรับดีบัก
-            }
-
-            ResetProgressBar();  // รีเซ็ต progress bar
-        }
-    }
-
-
-    void ResetProgressBar()
-    {
-        if (progressBar != null)
-        {
-            progress = 0f;  // รีเซ็ต progress เป็น 0
-            progressBar.localScale = minScale;  // ตั้งขนาด progressBar ใหม่
         }
     }
 }
