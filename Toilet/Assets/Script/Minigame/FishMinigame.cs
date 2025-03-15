@@ -1,73 +1,83 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
-public class FishMinigame : MonoBehaviour
+public class FishingMinigame : MonoBehaviour
 {
-    [SerializeField] Transform Top;
-    [SerializeField] Transform Bottom;
-    [SerializeField] Transform pooshit;
+    [Header("Fish Movement")]
+    public Transform topBound;      // จุดสูงสุดที่ปลาจะไปถึง
+    public Transform bottomBound;   // จุดต่ำสุดที่ปลาจะไปถึง
+    public Transform fish;          // Empty Object ที่ใช้ควบคุมปลา
+    private float fishPosition;
+    private float fishTarget;
+    private float fishSpeed;
+    public float fishMoveSpeed = 1f;  // ความเร็วของปลาที่จะเคลื่อนที่
 
-    float fishpo;
-    float fishdes;
-    float fishtime;
-    [SerializeField] float FTime = 3f;
-    float fishspeed;
-    [SerializeField] float Fspeed = 1f;
-
-    [SerializeField] Transform hook;
-    float hookPo;
-    float hookVeclocity;
-    [SerializeField] float hookpullPower = 0.01f;
-    [SerializeField] float hookGravity = 0.05f;
+    [Header("Hook Movement")]
+    public Transform hook;          // Empty Object ที่ใช้ควบคุมเบ็ด
+    private float hookPosition;
+    private float hookVelocity;
+    public float hookPullPower = 2f;
+    public float hookGravity = 1.5f;
 
     [Header("Progress Bar")]
-    [SerializeField] Transform progressBar; // ใช้ Transform แทน Image
-    float progress = 0f;
-    [SerializeField] float progressGainSpeed = 0.3f;
-    [SerializeField] float progressDecaySpeed = 0.1f;
-    [SerializeField] float detectionRange = 0.1f; // ระยะที่ Hook กับ ปลาอยู่ด้วยกัน
-    [SerializeField] Vector3 minScale = new Vector3(0, 1, 1); // ขนาดต่ำสุด
-    [SerializeField] Vector3 maxScale = new Vector3(1, 1, 1); // ขนาดสูงสุด
-    [SerializeField] GameObject fishing;
-    public CanvasText canvasTextScript;
-    [SerializeField] GameObject canvasUI;
-    [SerializeField] float TimePlust;
+    public Transform progressBar;   // UI Progress Bar
+    private float progress = 0f;
+    public float progressGainSpeed = 0.5f;
+    public float progressDecaySpeed = 0.2f;
+    public float detectionRange = 0.15f;
+    private Vector3 minScale = new Vector3(0, 1, 1);
+    private Vector3 maxScale = new Vector3(1, 1, 1);
 
+    [Header("Game State")]
+    public GameObject fishingUI; // Canvas ของมินิเกม
+    public float timeBonus = 10f;
+    private bool isFishing = true;
 
-    private void Update()
+    void Start()
     {
+        // ตั้งค่าตำแหน่งเริ่มต้นของปลา
+        fishPosition = Random.Range(0f, 1f);
+        fishTarget = fishPosition;
+    }
+
+    void Update()
+    {
+        if (!isFishing) return; // ถ้าจบมินิเกมแล้ว ไม่ต้องอัปเดต
+
         FishMovement();
         HookMovement();
-        ProgressBar();
+        ProgressBarUpdate();
     }
 
     void HookMovement()
     {
         if (Input.GetMouseButton(0))
         {
-            hookVeclocity += hookpullPower;
+            hookVelocity += hookPullPower * Time.deltaTime;
         }
-        hookVeclocity -= hookGravity * Time.deltaTime;
-        hookPo += hookVeclocity;
-        hookPo = Mathf.Clamp(hookPo, 0, 1);
-        hook.position = Vector3.Lerp(Bottom.position, Top.position, hookPo);
+
+        hookVelocity -= hookGravity * Time.deltaTime;
+        hookPosition += hookVelocity * Time.deltaTime;
+        hookPosition = Mathf.Clamp(hookPosition, 0f, 1f);
+
+        hook.position = Vector3.Lerp(bottomBound.position, topBound.position, hookPosition);
     }
 
     void FishMovement()
     {
-        fishtime -= Time.deltaTime;
-        if (fishtime < 0)
+        if (Mathf.Abs(fishPosition - fishTarget) < 0.01f)
         {
-            fishtime = UnityEngine.Random.value * FTime;
-            fishdes = UnityEngine.Random.value;
+            fishTarget = Random.Range(0f, 1f);
         }
-        fishpo = Mathf.SmoothDamp(fishpo, fishdes, ref fishspeed, Fspeed);
-        pooshit.position = Vector3.Lerp(Bottom.position, Top.position, fishpo);
+
+        fishPosition = Mathf.MoveTowards(fishPosition, fishTarget, fishMoveSpeed * Time.deltaTime);
+        fish.position = Vector3.Lerp(bottomBound.position, topBound.position, fishPosition);
     }
 
-    void ProgressBar()
+    void ProgressBarUpdate()
     {
-        // เช็คระยะระหว่าง Hook กับ ปลา
-        float distance = Mathf.Abs(hookPo - fishpo);
+        // เช็คระยะห่างระหว่าง hook และ fish
+        float distance = Mathf.Abs(hookPosition - fishPosition);
 
         if (distance < detectionRange)
         {
@@ -80,45 +90,63 @@ public class FishMinigame : MonoBehaviour
 
         progress = Mathf.Clamp01(progress);
 
-        // ปรับขนาดของ Progress Bar
         if (progressBar != null)
         {
             progressBar.localScale = Vector3.Lerp(minScale, maxScale, progress);
         }
 
-        // เมื่อเกจเต็ม (progress >= 1)
-        if (progress >= 1f)
+        // เมื่อ Progress Bar เต็ม (progress >= 1)
+        if (progress >= 1f && isFishing)
         {
-            if (canvasUI != null)
-            {
-                canvasUI.SetActive(false);  // ปิด Canvas หรืออะไรก็แล้วแต่
-            }
-
-            // เพิ่มเวลา 10 วินาทีให้กับ RemainingTime ใน CanvasText
-            CanvasText canvasTextScript = FindObjectOfType<CanvasText>();  // หาค่าจาก CanvasText
-            if (canvasTextScript != null)
-            {
-                canvasTextScript.RemainingTime += TimePlust;  // เพิ่มเวลา 10 วินาที
-                Debug.Log("Time increased by 10 seconds!");  // สำหรับดีบัก
-            }
-
-            ResetProgressBar();  // รีเซ็ต progress bar
-        }
-        void ResetProgressBar()
-        {
-            if (progressBar != null)
-            {
-                progress = 0f;  // รีเซ็ต progress เป็น 0
-                progressBar.localScale = minScale;  // ตั้งขนาด progressBar ใหม่
-            }
+            FinishFishing();  // เรียกฟังก์ชันเมื่อ Progress Bar เต็ม
         }
     }
 
+    void FinishFishing()
+    {
+        // ตรวจสอบว่า progress bar เต็ม
+        Debug.Log("Fishing Finished! Gaining Time.");
 
+        // ส่งค่าตัวแปร RemainingTime เพิ่ม 10 วินาที
+        CanvasText canvasTextScript = FindObjectOfType<CanvasText>();
+        if (canvasTextScript != null)
+        {
+            canvasTextScript.RemainingTime += 10f;  // เพิ่มเวลา 10 วินาที
+            Debug.Log("Fishing Success! Gained 10 seconds.");
+        }
+
+        // ปิด UI ของมินิเกม
+        if (fishingUI != null)
+        {
+            fishingUI.SetActive(false);  // ปิด Canvas หรืออะไรก็แล้วแต่
+        }
+
+        // รีเซ็ตมินิเกม
+        ResetMinigame();
+    }
+
+    void ResetMinigame()
+    {
+        // รีเซ็ตค่าทุกอย่างที่เกี่ยวกับมินิเกม
+        fishPosition = Random.Range(0f, 1f);  // ตั้งค่าตำแหน่งปลาใหม่
+        fishTarget = fishPosition;
+        progress = 0f;  // รีเซ็ต Progress
+        hookPosition = 0f;  // รีเซ็ตตำแหน่ง hook
+        hookVelocity = 0f;  // รีเซ็ตความเร็ว hook
+        progressBar.localScale = minScale;  // รีเซ็ตขนาดของ progress bar
+        hook.position = Vector3.Lerp(bottomBound.position, topBound.position, hookPosition);  // รีเซ็ตตำแหน่ง hook
+        isFishing = true;  // เริ่มต้นการมินิเกมใหม่
+    }
 
 
     public void ResetProgress()
     {
-        progress = 0f; // รีเซ็ต Progress
+        progress = 0f; // รีเซ็ตค่าความคืบหน้า
+        if (progressBar != null)
+        {
+            progressBar.localScale = minScale; // ตั้งค่า Progress Bar ให้เริ่มต้นใหม่
+        }
+        isFishing = true; // เปิดให้เล่นมินิเกมใหม่
     }
+
 }
