@@ -2265,11 +2265,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &1311167832 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6837410002946204073, guid: 51d874eccfb4cdf42b75f12be823254f, type: 3}
-  m_PrefabInstance: {fileID: 358623642617550908}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1319360286
 GameObject:
   m_ObjectHideFlags: 0
@@ -3307,24 +3302,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad15a4381fbdeb444b98f547d61183ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Top: {fileID: 99660415}
-  Bottom: {fileID: 678160518}
-  pooshit: {fileID: 729001525}
-  FTime: 2
-  Fspeed: 1
+  topBound: {fileID: 99660415}
+  bottomBound: {fileID: 678160518}
+  fish: {fileID: 729001525}
+  fishMoveSpeed: 0.3
   hook: {fileID: 1145392051}
-  hookpullPower: 0.167
-  hookGravity: 0.111
+  hookPullPower: 3
+  hookGravity: 1.5
   progressBar: {fileID: 491678043}
   progressGainSpeed: 0.3
   progressDecaySpeed: 0.1
   detectionRange: 0.1
-  minScale: {x: 1, y: 0, z: 1}
-  maxScale: {x: 5, y: 5, z: 5}
-  fishing: {fileID: 2117332219}
-  canvasTextScript: {fileID: 2604872900501050955}
-  canvasUI: {fileID: 1311167832}
-  TimePlust: 5
+  fishingUI: {fileID: 0}
+  timeBonus: 10
 --- !u!1001 &358623642617550908
 PrefabInstance:
   m_ObjectHideFlags: 0

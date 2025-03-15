@@ -8,11 +8,11 @@ public class MinigameOpen : MonoBehaviour
     public GameObject Fishing;
     public bool isdettingactive;
 
-    private FishMinigame fishMinigame; // เพิ่มตัวแปรอ้างอิงไปยัง FishMinigame
+    private FishingMinigame fishMinigame; // เปลี่ยนจาก FishMinigame เป็น FishingMinigame
 
     void Start()
     {
-        fishMinigame = Fishing.GetComponent<FishMinigame>(); // หาตัว FishMinigame จาก GameObject Fishing
+        fishMinigame = Fishing.GetComponent<FishingMinigame>(); // แก้ชื่อคลาสให้ตรงกับที่ประกาศไว้
     }
 
     void Update()
