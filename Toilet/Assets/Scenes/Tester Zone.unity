@@ -4638,7 +4638,7 @@ MonoBehaviour:
   progressDecaySpeed: 0.1
   detectionRange: 0.1
   fishingUI: {fileID: 0}
-  timeBonus: 10
+  timeBonus: 30
 --- !u!43 &2147099788
 Mesh:
   m_ObjectHideFlags: 0
