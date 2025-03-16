@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public PlayerScript ps;
+    public CanvasText ct;
 
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Player"))
         {
             FindObjectOfType<AudioManager>().Play("Item");
-            ps.abilityCount += 3;
+            ct.IncreaseTime(10);
             Destroy(gameObject);
         }
     }

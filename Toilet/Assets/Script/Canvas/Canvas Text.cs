@@ -188,5 +188,10 @@ public class CanvasText : MonoBehaviour
         RemainingTime -= time;
     }
 
+    public void IncreaseTime(int time)
+    {
+        RemainingTime += time;
+    }
+
 
 }
