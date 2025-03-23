@@ -9,6 +9,11 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Level 1");
     }
+
+    public void PlayCutScene()
+    {
+        SceneManager.LoadScene("Cutscene");
+    }
     public void Quit()
     {
         Application.Quit();

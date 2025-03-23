@@ -132,6 +132,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -235,15 +238,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5825724346461494452}
   m_LocalRotation: {x: -0.0025172976, y: -0.014171532, z: 0.068360396, w: 0.9975569}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.077154, y: 3.763642, z: 2.9972463}
+  m_LocalPosition: {x: 0, y: 0, z: -0.069598384}
+  m_LocalScale: {x: 8.154308, y: 7.527284, z: 5.9944925}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2618904323286554438}
   m_LocalEulerAnglesHint: {x: -0.177, y: -1.64, z: 7.843}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 770, y: 18}
+  m_AnchoredPosition: {x: 768.63684, y: 27.906433}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7481489435557264498
@@ -274,7 +277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b4b09ae6b58ea2d4ea08da4d80c55542, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5461d27fc1964444397882f2a7168e81, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -455,6 +458,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 51e4bc50c9a585f4884c6c53a5ba5101, type: 3}
+    - target: {fileID: 1241127877443531551, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 1454196700282186309, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -614,6 +621,10 @@ PrefabInstance:
     - target: {fileID: 7964541088411549001, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
       propertyPath: m_Name
       value: FinalTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969344693956512797, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 8277334812087767834, guid: 1959a73fbd175114285857fc2054e7b6, type: 3}
       propertyPath: m_Sprite
